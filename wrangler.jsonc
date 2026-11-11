@@ -1,0 +1,12 @@
+{
+  // Cloudflare Workers — static assets only (no Worker script needed).
+  // Build with `npm run build`, then deploy with `npm run deploy`.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ghia-website",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page",
+    "html_handling": "force-trailing-slash"
+  }
+}
