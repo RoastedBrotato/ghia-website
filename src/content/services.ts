@@ -12,6 +12,7 @@ export const pillars: Record<
     accent: string;
     summary: string;
     hue: string;
+    icon: IconName;
     /** How a project in this category runs, shown on each service page */
     process: { title: string; body: string }[];
     /** Who this category is usually right for */
@@ -19,6 +20,7 @@ export const pillars: Record<
   }
 > = {
   creative: {
+    icon: "brand",
     name: "Creative & Production",
     eyebrow: "Creative & production",
     title: "Ideas people",
@@ -38,6 +40,7 @@ export const pillars: Record<
     ],
   },
   growth: {
+    icon: "growth",
     name: "Marketing & Growth",
     eyebrow: "Marketing & growth",
     title: "Attention that",
@@ -57,6 +60,7 @@ export const pillars: Record<
     ],
   },
   commerce: {
+    icon: "storefront",
     name: "E-commerce & Marketplace",
     eyebrow: "E-commerce & marketplace",
     title: "Marketplaces that",
@@ -76,6 +80,7 @@ export const pillars: Record<
     ],
   },
   digital: {
+    icon: "chip",
     name: "Technology & Digital Solutions",
     eyebrow: "Technology & digital",
     title: "Systems that",

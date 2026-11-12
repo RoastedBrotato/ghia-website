@@ -7,6 +7,8 @@ import {
   Eyebrow,
   IconTile,
 } from "@/components/ui/primitives";
+import { HeroVisual } from "@/components/brand/HeroVisual";
+import { PhoneCall } from "@/components/mockups/PhoneCall";
 import { DivisionCards } from "@/components/sections/ServiceCards";
 import { solutions } from "@/content/solutions";
 import { site } from "@/lib/site";
@@ -41,24 +43,29 @@ export default function Home() {
     <>
       {/* Hero on the navy band */}
       <div className="theme-dark hero-glow">
-        <section className="pb-20 pt-20 sm:pb-28 sm:pt-28">
-          <Container>
-            <Eyebrow className="mb-5">Creative, growth &amp; AI studio</Eyebrow>
-            <h1 className="t-display-xl max-w-[56rem] text-ink">
-              We build <span className="grad">brands</span> that grow.
-            </h1>
-            <p className="t-body-lg mt-6 max-w-[36rem]">
-              Ghia Technologies designs brands, builds websites, produces films
-              and runs the campaigns and AI systems that turn attention into
-              customers.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button href={site.bookingUrl} size="lg">
-                Start a project
-              </Button>
-              <Button href="/services/" size="lg" variant="secondary">
-                Explore services
-              </Button>
+        <section className="overflow-hidden pb-16 pt-16 sm:pb-24 sm:pt-20">
+          <Container className="grid items-center gap-6 lg:grid-cols-12 lg:gap-4">
+            <div className="lg:col-span-6">
+              <Eyebrow className="mb-5">Creative, growth &amp; AI studio</Eyebrow>
+              <h1 className="t-display-xl max-w-[56rem] text-ink">
+                We build <span className="grad">brands</span> that grow.
+              </h1>
+              <p className="t-body-lg mt-6 max-w-[36rem]">
+                Ghia Technologies designs brands, builds websites, produces
+                films and runs the campaigns and AI systems that turn attention
+                into customers.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button href={site.bookingUrl} size="lg">
+                  Start a project
+                </Button>
+                <Button href="/services/" size="lg" variant="secondary">
+                  Explore services
+                </Button>
+              </div>
+            </div>
+            <div className="-mx-4 sm:mx-0 lg:col-span-6 lg:-mr-12">
+              <HeroVisual className="block h-auto w-full" />
             </div>
           </Container>
         </section>
@@ -102,11 +109,25 @@ export default function Home() {
       {/* Flagship solutions: the one futuristic band */}
       <section className="theme-dark ai-glow mt-12 py-20 sm:mt-16 sm:py-24">
         <Container>
-          <Eyebrow className="mb-5">Flagship solutions</Eyebrow>
-          <h2 className="t-h1 text-ink">
-            AI systems that do the <span className="grad">work</span>.
-          </h2>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-8">
+            <div className="lg:col-span-6">
+              <Eyebrow className="mb-5">Flagship solutions</Eyebrow>
+              <h2 className="t-h1 text-ink">
+                AI systems that do the <span className="grad">work</span>.
+              </h2>
+              <p className="t-body-lg mt-5 max-w-[34rem]">
+                An AI receptionist that answers every call, books the
+                appointment and hands your team a summary, day or night.
+              </p>
+              <div className="mt-8">
+                <Button href="/solutions/">Explore AI solutions</Button>
+              </div>
+            </div>
+            <div className="lg:col-span-6">
+              <PhoneCall />
+            </div>
+          </div>
+          <div className="mt-14 grid gap-5 md:grid-cols-3">
             {solutions.map((s) => (
               <Card
                 key={s.slug}
@@ -120,11 +141,6 @@ export default function Home() {
                 <CardArrow />
               </Card>
             ))}
-          </div>
-          <div className="mt-8">
-            <Button href="/solutions/" variant="secondary">
-              All solutions
-            </Button>
           </div>
         </Container>
       </section>
