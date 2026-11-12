@@ -164,7 +164,13 @@ export function ServiceSlider() {
         >
           <div className="absolute inset-0 [transform-style:preserve-3d]">
             {pillarOrder.map((p, i) => {
-              const theta = (i - turn) * STEP; // position on the circle
+              // Position on the circle. `theta` grows without bound so the ring
+              // always turns the short way; it's cancelled out exactly below
+              // (rotateY(-theta)) so the card faces the viewer on every lap, and
+              // the slight side tilt comes from sin(theta), which repeats every
+              // 360°, so the 4th, 7th… rotation looks the same as the 1st.
+              const theta = (i - turn) * STEP;
+              const tilt = Math.sin((theta * Math.PI) / 180) * 22;
               const front = mod(i - turn, N) === 0;
               return (
                 <div
@@ -180,7 +186,7 @@ export function ServiceSlider() {
                     front ? "z-10" : "cursor-pointer",
                   )}
                   style={{
-                    transform: `translateX(-50%) translateZ(calc(var(--r) * -1)) rotateY(${theta}deg) translateZ(var(--r)) rotateY(${-theta * 0.82}deg)`,
+                    transform: `translateX(-50%) translateZ(calc(var(--r) * -1)) rotateY(${theta}deg) translateZ(var(--r)) rotateY(${-theta}deg) rotateY(${tilt.toFixed(2)}deg)`,
                     opacity: front ? 1 : 0.55,
                     filter: front ? "none" : "blur(5px) saturate(0.75)",
                   }}
