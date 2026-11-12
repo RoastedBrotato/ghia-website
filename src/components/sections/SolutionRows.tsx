@@ -15,7 +15,7 @@ export function SolutionRows({ headingLevel = "h3" }: { headingLevel?: "h2" | "h
             id={s.slug}
             className="grid items-center gap-10 lg:grid-cols-12 lg:gap-8"
           >
-            <div className={cx("reveal lg:col-span-5", i % 2 === 1 && "lg:order-2 lg:col-start-8")}>
+            <div className={cx("lg:col-span-5", i % 2 === 1 && "lg:order-2 lg:col-start-8")}>
               <Eyebrow className="eyebrow--plain mb-4">
                 {String(i + 1).padStart(2, "0")} · {s.name}
               </Eyebrow>
@@ -31,10 +31,9 @@ export function SolutionRows({ headingLevel = "h3" }: { headingLevel?: "h2" | "h
             </div>
             <div
               className={cx(
-                "reveal lg:col-span-6",
+                "lg:col-span-6",
                 i % 2 === 1 ? "lg:order-1 lg:col-start-1" : "lg:col-start-7",
               )}
-              style={{ ["--reveal-delay" as string]: "120ms" }}
             >
               <Mock />
             </div>

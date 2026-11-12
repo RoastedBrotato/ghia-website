@@ -2,38 +2,96 @@
 
 /* ==========================================================================
    Ghia Technologies — design tokens
-   Palette: Deep Navy / Midnight Navy / Electric Blue / Neon Cyan.
-   Token *names* follow the brand kit (paper = page ground, ink = text,
-   volt = the accent) so components stay theme-agnostic.
-   `.theme-ink` re-maps tokens to the darker Midnight Navy for dark sections.
+   Palette (client brief, 2026-11-13):
+     Midnight Navy #111827 · Soft White #F8FAFC · Electric Blue #526DFF ·
+     Cool Grey #DCE5F2
+   Light is the default: soft-white content sections with white cards. The
+   hero, the AI solutions band, the closing CTA and the footer sit on
+   Midnight Navy via `.theme-dark`. The nav toggle switches the whole site
+   to navy (html[data-theme="dark"]).
+   Electric Blue #526DFF is the accent for icons, borders and highlights;
+   small text and button fills use #4762F7, the same hue a touch deeper, so
+   white-on-blue and blue-on-white pass WCAG AA (4.8:1).
+   Never hard-code white/black in a component — use the tokens.
    ========================================================================== */
 
-:root {
-  --paper: #07152d; /* Deep Navy — main background */
-  --surface-raised: #0c1f3d; /* cards, menus */
-  --surface-sunken: #030b1a; /* Midnight Navy — alternating sections */
-  --ink: #ffffff; /* headings */
-  --ink-muted: #b9c9e1; /* body text */
-  --ink-subtle: #8597b5; /* captions, labels */
-  --line: #15294b;
-  --line-strong: #263f68;
-  --line-control: #4a6694;
-  --volt: #1678e8; /* Electric Blue — the accent */
-  --volt-text: #5aa9ff; /* accent text and links (AA on navy) */
-  --volt-soft: #0d2a56;
+:root,
+[data-theme="light"] {
+  --paper: #f8fafc; /* Soft White — page ground */
+  --surface-raised: #ffffff;
+  --surface-sunken: #f1f5fa; /* alternating content sections */
+  --card: #ffffff;
+  --card-edge: #dce5f2; /* Cool Grey */
+  --card-highlight: rgba(255, 255, 255, 0);
+  --field: #ffffff;
+  --ink: #111827; /* Midnight Navy — headings */
+  --ink-muted: #4b5563; /* body text */
+  --ink-subtle: #6b7280; /* captions, labels */
+  --line: #dce5f2; /* Cool Grey */
+  --line-strong: #c9d5e6;
+  --line-control: #9aa8bd;
+  --volt: #526dff; /* Electric Blue — accent */
+  --volt-text: #4762f7; /* accent text, AA on white */
+  --volt-soft: #eef1ff;
   --on-volt: #ffffff;
-  --cyan: #00c8ff; /* Neon Cyan — hover, focus, glows */
-  --btn: #0f6bd6; /* Electric Blue, a touch deeper so white text passes AA */
-  --on-cyan: #030b1a;
-  --focus: var(--cyan);
+  --cyan: #526dff; /* icons */
+  --btn: #4762f7;
+  --btn-hover: #3a55ea;
+  --on-cyan: #ffffff;
+  --focus: #526dff;
+  --success: #16a34a;
+  --warning: #d97706;
+  --danger: #dc2626;
+  --shadow-sm: 0 1px 2px rgba(17, 24, 39, 0.05);
+  --shadow-lg: 0 24px 48px -16px rgba(17, 24, 39, 0.16);
+  --card-shadow: 0 1px 2px rgba(17, 24, 39, 0.04), 0 8px 24px -16px rgba(17, 24, 39, 0.12);
+  --card-shadow-hover: 0 2px 4px rgba(17, 24, 39, 0.04), 0 24px 48px -20px rgba(82, 109, 255, 0.35);
+
+  color-scheme: light;
+}
+
+[data-theme="dark"],
+.theme-dark {
+  --paper: #111827; /* Midnight Navy */
+  --surface-raised: #182133;
+  --surface-sunken: #0c121e;
+  --card: rgba(255, 255, 255, 0.035);
+  --card-edge: rgba(220, 229, 242, 0.1);
+  --card-highlight: rgba(255, 255, 255, 0.05);
+  --field: rgba(255, 255, 255, 0.04);
+  --ink: #f8fafc;
+  --ink-muted: #a9b4c6;
+  --ink-subtle: #8391a7;
+  --line: #232d3f;
+  --line-strong: #334056;
+  --line-control: #56647c;
+  --volt: #526dff;
+  --volt-text: #8ea0ff; /* AA on navy */
+  --volt-soft: rgba(82, 109, 255, 0.14);
+  --on-volt: #ffffff;
+  --cyan: #8ea0ff;
+  --btn: #4762f7;
+  --btn-hover: #5a74ff;
+  --on-cyan: #111827;
+  --focus: #8ea0ff;
   --success: #3cc98f;
   --warning: #f0a04b;
   --danger: #ff6b6b;
-  --ring-stroke: #1d3560;
-  --glow: rgba(22, 120, 232, 0.22);
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 24px 48px -12px rgba(0, 0, 0, 0.6);
+  --card-shadow: none;
+  --card-shadow-hover: 0 24px 48px -24px rgba(82, 109, 255, 0.45);
 
+  color-scheme: dark;
+}
+
+/* A navy band inside a light page paints its own ground and text. */
+.theme-dark {
+  background-color: var(--paper);
+  color: var(--ink);
+}
+
+:root {
   --brand-ink: #030b1a;
   --brand-paper: #ffffff;
   --brand-volt: #1678e8;
@@ -41,25 +99,15 @@
 
   --nav-height: 72px;
   --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
-
-  color-scheme: dark;
-}
-
-.theme-ink {
-  --paper: #030b1a; /* Midnight Navy */
-  --surface-raised: #0a1830;
-  --surface-sunken: #020814;
-  --line: #13233f;
-  --line-strong: #22395f;
-  --ring-stroke: #172c50;
-  background-color: var(--paper);
-  color: var(--ink);
 }
 
 @theme inline {
   --color-paper: var(--paper);
   --color-raised: var(--surface-raised);
   --color-sunken: var(--surface-sunken);
+  --color-card: var(--card);
+  --color-card-edge: var(--card-edge);
+  --color-field: var(--field);
   --color-ink: var(--ink);
   --color-ink-muted: var(--ink-muted);
   --color-ink-subtle: var(--ink-subtle);
@@ -115,7 +163,7 @@
     font-feature-settings: "cv11", "ss01";
   }
   ::selection {
-    background: var(--volt);
+    background: #526dff;
     color: #ffffff;
   }
   :focus-visible {
@@ -132,7 +180,7 @@
 @layer components {
   .t-display-xl {
     font-family: var(--font-display);
-    font-weight: 200;
+    font-weight: 300;
     font-size: clamp(3.25rem, 1.6rem + 6.4vw, 6rem);
     line-height: 1;
     letter-spacing: -0.04em;
@@ -140,7 +188,7 @@
   }
   .t-display-lg {
     font-family: var(--font-display);
-    font-weight: 200;
+    font-weight: 300;
     font-size: clamp(2.75rem, 1.7rem + 4.2vw, 4.5rem);
     line-height: 1.05;
     letter-spacing: -0.032em;
@@ -217,7 +265,7 @@
     font-family: var(--font-mono);
     font-size: 0.75rem;
     line-height: 1rem;
-    letter-spacing: 0.24em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--volt-text);
   }
@@ -226,8 +274,7 @@
     width: 6px;
     height: 6px;
     border-radius: 999px;
-    background: var(--cyan);
-    box-shadow: 0 0 10px var(--cyan);
+    background: var(--volt);
     flex: none;
   }
   .eyebrow--plain::before {
@@ -312,397 +359,92 @@
   }
 }
 
-/* ---------- Motion ---------- */
-@layer utilities {
-  /* Scroll reveal: elements start slightly lowered and transparent; JS adds .is-in. */
-  .reveal {
-    opacity: 0;
-    transform: translateY(16px);
-    transition:
-      opacity 0.7s var(--ease-out),
-      transform 0.7s var(--ease-out);
-    transition-delay: var(--reveal-delay, 0ms);
-  }
-  .reveal.is-in {
-    opacity: 1;
-    transform: none;
-  }
-  .no-js .reveal {
-    opacity: 1;
-    transform: none;
+/* ==========================================================================
+   Studio finish — light display type with one Electric Blue word, clean cards.
+   No scroll effects or entrance animation: the only movement on the site is
+   a short hover response on buttons and cards.
+   ========================================================================== */
+
+/* Accent word inside a headline: solid Electric Blue, no gradient. */
+.grad {
+  color: var(--volt-text);
+}
+
+/* Card surface: white on light pages, translucent on navy. */
+.glass {
+  background-color: var(--card);
+  border: 1px solid var(--card-edge);
+  box-shadow:
+    inset 0 1px 0 var(--card-highlight),
+    var(--card-shadow);
+}
+
+/* Linked cards: lift, blue edge, soft blue shadow. */
+.lift {
+  transition:
+    transform 0.3s var(--ease-out),
+    box-shadow 0.3s var(--ease-out),
+    border-color 0.3s;
+}
+.lift:hover {
+  border-color: color-mix(in srgb, var(--volt) 55%, transparent);
+  box-shadow:
+    inset 0 1px 0 var(--card-highlight),
+    var(--card-shadow-hover);
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .lift:hover {
+    transform: translateY(-4px);
   }
 }
 
-/* Signal rings: draw in once, then the Volt dot settles onto the outer ring */
-@keyframes ring-draw {
-  from {
-    stroke-dashoffset: 1;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-@keyframes dot-arrive {
-  from {
-    opacity: 0;
-    transform: rotate(-28deg);
-  }
-  to {
-    opacity: 1;
-    transform: rotate(0deg);
-  }
-}
-.rings--animate .ring {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  animation: ring-draw 1.6s var(--ease-out) forwards;
-  animation-delay: calc(var(--i) * 110ms + 150ms);
-}
-.rings--animate .ring-dot {
-  opacity: 0;
-  animation: dot-arrive 1.4s var(--ease-out) forwards;
-  animation-delay: 900ms;
+/* AI solutions band: navy with a faint Electric Blue glow and grid. */
+.ai-glow {
+  background-image:
+    radial-gradient(60% 55% at 85% 0%, rgba(82, 109, 255, 0.22), transparent 70%),
+    radial-gradient(45% 50% at 0% 100%, rgba(82, 109, 255, 0.12), transparent 70%),
+    linear-gradient(rgba(220, 229, 242, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(220, 229, 242, 0.035) 1px, transparent 1px);
+  background-size:
+    auto,
+    auto,
+    48px 48px,
+    48px 48px;
 }
 
-/* Soft Electric Blue glow behind hero / CTA visuals */
-.glow-tr {
-  background-image: radial-gradient(
-    55% 65% at 85% 35%,
-    var(--glow),
-    transparent 70%
-  );
+/* Hero: navy with one quiet glow in the corner. */
+.hero-glow {
+  background-image: radial-gradient(55% 60% at 90% 10%, rgba(82, 109, 255, 0.16), transparent 70%);
 }
 
-/* Menus fade in on open */
-@keyframes menu-in {
-  from {
-    opacity: 0;
-    transform: translateY(-6px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
+/* Theme toggle: show the icon for the theme you'd switch to. */
+.theme-icon-light,
+[data-theme="light"] .theme-icon-dark {
+  display: none;
 }
-.menu-enter {
-  animation: menu-in 0.18s var(--ease-out);
+[data-theme="light"] .theme-icon-light {
+  display: block;
 }
 
-/* Marquee for the platforms strip */
-@keyframes marquee {
-  from {
-    transform: translateX(0);
+/* ---------- Primary call to action: solid Electric Blue ---------- */
+@layer components {
+  .btn-cta {
+    color: #ffffff;
+    border-color: transparent;
+    background-color: var(--btn);
+    box-shadow: 0 8px 20px -10px rgba(82, 109, 255, 0.6);
   }
-  to {
-    transform: translateX(-50%);
+  .btn-cta:hover {
+    background-color: var(--btn-hover);
+    box-shadow: 0 12px 26px -10px rgba(82, 109, 255, 0.7);
   }
-}
-.marquee-track {
-  animation: marquee 48s linear infinite;
-}
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
-  .marquee-track {
-    animation: none;
-  }
 }
-
-/* Lenis smooth scrolling (from lenis/dist/lenis.css) */
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-.lenis:not(.lenis-autoToggle).lenis-stopped {
-  overflow: clip;
-}
-.lenis [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-.lenis.lenis-smooth iframe {
-  pointer-events: none;
-}
-
-/* ==========================================================================
-   Motion system (anime.js via MotionDirector + a few CSS-only effects)
-   ========================================================================== */
-
-/* Elements animated by JS start hidden — but only when JS is on and motion is
-   allowed. If the script never runs, they appear after 2.5s regardless. */
-@media (prefers-reduced-motion: no-preference) {
-  .js [data-split],
-  .js [data-scramble],
-  .js [data-stagger] {
-    opacity: 0;
-    animation: motion-failsafe 0s linear 2.5s forwards;
-  }
-}
-@keyframes motion-failsafe {
-  to {
-    opacity: 1;
-  }
-}
-
-/* Hero copy fades up after the headline */
-@keyframes hero-fade {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-.hero-fade {
-  animation: hero-fade 1s var(--ease-out) 0.9s both;
-}
-
-/* Scroll cue line */
-@keyframes scroll-cue {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(200%);
-  }
-}
-.scroll-cue {
-  animation: scroll-cue 1.8s cubic-bezier(0.6, 0, 0.3, 1) infinite;
-}
-
-/* Outlined display type for the kinetic marquee */
-.text-outline {
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--line-control);
-}
-
-/* Card spotlight: a cyan light follows the pointer across cards */
-.spotlight::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.35s;
-  background: radial-gradient(
-    420px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(0, 200, 255, 0.11),
-    transparent 60%
-  );
-}
-.spotlight:hover::before {
-  opacity: 1;
-}
-
-/* Reading progress bar (CSS scroll-driven animation where supported) */
-@keyframes progress-grow {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
-  }
-}
-.scroll-progress {
-  transform-origin: 0 50%;
-  transform: scaleX(0);
-}
-@supports (animation-timeline: scroll()) {
-  .scroll-progress {
-    animation: progress-grow linear both;
-    animation-timeline: scroll(root);
-  }
-}
-
-/* Split-text pieces: give the clipping mask room for descenders (g, p, y) */
-[data-split] span:has(> [data-word]) {
-  padding-bottom: 0.24em;
-  margin-bottom: -0.24em;
-}
-[data-split] .split-word,
-[data-split] [class*="word"] {
-  will-change: transform;
-}
-
-/* ==========================================================================
-   Studio finish — thin display type with one gradient word, glass surfaces
-   ========================================================================== */
-
-/* Gradient accent word inside a headline. When the headline is split into
-   word spans for animation, each word carries the gradient itself (a parent
-   background can't clip through transformed children). */
-.grad,
-.grad [data-word] {
-  background-image: linear-gradient(110deg, #5aa9ff 0%, #00c8ff 45%, #9b7bff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-}
-.grad:has([data-word]) {
-  background-image: none;
-}
-/* background-clip: text only paints inside the element's box, and descenders
-   (g, j, p, y) hang below it — extend the box downward so they get the
-   gradient too. Inline spans don't move the layout; split word boxes
-   (inline-block) cancel the extra height with a negative margin. */
-.grad {
-  padding-bottom: 0.18em;
-}
-.grad [data-word] {
-  padding-bottom: 0.18em;
-  margin-bottom: -0.18em;
-}
-
-/* Frosted glass surface: translucent fill, hairline edge, top highlight. */
-.glass {
-  background-color: rgba(140, 175, 230, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-}
-
-/* Interactive glass cards lean toward the viewer on hover. */
-.tilt {
-  transform-style: preserve-3d;
-  transition:
-    transform 0.45s var(--ease-out),
-    box-shadow 0.45s var(--ease-out),
-    border-color 0.3s;
-}
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .tilt:hover {
-    transform: perspective(900px) rotateX(3deg) rotateY(-4deg) translateY(-6px);
-  }
-}
-.tilt:hover {
-  border-color: rgba(0, 200, 255, 0.35);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 30px 50px -25px rgba(0, 0, 0, 0.8),
-    0 0 0 1px rgba(0, 200, 255, 0.18),
-    0 20px 60px -20px rgba(22, 120, 232, 0.55);
-}
-
-/* ---------- Service slider ---------- */
-@keyframes slide-progress {
-  from {
-    width: 0%;
-  }
-  to {
-    width: 100%;
-  }
-}
-.slide-progress {
-  width: 0%;
-  animation-name: slide-progress;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-}
-@keyframes slide-in {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-    filter: blur(6px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-    filter: none;
-  }
-}
-.slide-in {
-  animation: slide-in 0.7s var(--ease-out) both;
-  animation-delay: var(--d, 0ms);
-}
-@keyframes orbit-in {
-  from {
-    opacity: 0;
-    transform: scale(0.85) rotate(-25deg);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-.orbit-in {
-  animation: orbit-in 0.9s var(--ease-out) both;
-}
-@keyframes orbit-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-.orbit-spin {
-  animation: orbit-spin 60s linear infinite;
-}
-.orbit-counter {
-  animation: orbit-spin 60s linear infinite reverse;
-}
-
-/* ---------- Primary call to action ----------
-   The one warm colour on the page. Everything else is navy, blue, cyan and
-   violet, so a calm orange (blue's complement) is enough to make the CTA the
-   button you see first. Kept flat with a soft shadow so it fits the site
-   rather than shouting. */
-@layer components {
-  .btn-cta {
-    color: #1f0c02;
-    border-color: transparent;
-    background: linear-gradient(135deg, #ffa462 0%, #ff8240 100%);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.28),
-      0 8px 22px -12px rgba(255, 120, 50, 0.55);
-  }
-  .btn-cta:hover {
-    background: linear-gradient(135deg, #ffb075 0%, #ff8c4d 100%);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.32),
-      0 12px 28px -12px rgba(255, 120, 50, 0.65);
-  }
-  .btn-cta:focus-visible {
-    outline-color: #ffb075;
-  }
-}
-
-/* ---------- Services carousel ---------- */
-.carousel-stage {
-  --r: 150px; /* radius of the ring the cards sit on */
-  height: 640px;
-}
-@media (min-width: 640px) {
-  .carousel-stage {
-    --r: 260px;
-    height: 560px;
-  }
-}
-@media (min-width: 1024px) {
-  .carousel-stage {
-    --r: 380px;
-    height: 540px;
-  }
-}
-.carousel-card {
-  transition:
-    transform 0.9s cubic-bezier(0.22, 0.8, 0.24, 1),
-    opacity 0.9s var(--ease-out),
-    filter 0.9s var(--ease-out);
-  backface-visibility: hidden;
-}
-

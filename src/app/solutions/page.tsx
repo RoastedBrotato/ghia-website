@@ -47,14 +47,14 @@ export default function SolutionsPage() {
         }
       />
 
-      <Section>
-        <Container wide>
+      <Section className="theme-dark ai-glow border-t border-line">
+        <Container>
           <SolutionRows headingLevel="h2" />
         </Container>
       </Section>
 
       <Section tone="sunken">
-        <Container wide>
+        <Container>
           <SectionHeader
             eyebrow="Deployment"
             title="From first call to live, step by step."
@@ -65,7 +65,7 @@ export default function SolutionsPage() {
       </Section>
 
       <Section>
-        <Container wide>
+        <Container>
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-4">
               <SectionHeader eyebrow="FAQ" title="Questions we hear." />
@@ -78,7 +78,6 @@ export default function SolutionsPage() {
       </Section>
 
       <CtaBand
-        eyebrow="Start with one"
         title="Pick the process that hurts most."
         body="We'll map it, show you what an AI system would handle and what should stay with your team, and give you a clear plan."
       />

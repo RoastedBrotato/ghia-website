@@ -13,6 +13,21 @@ export const metadata: Metadata = {
     "Ghia Technologies is a digital growth and AI automation partner: one team running marketplaces, search, paid media, web and AI systems, measured on revenue.",
 };
 
+const different = [
+  {
+    title: "One integrated team",
+    body: "Brand, web, film, marketing and AI under one roof — one brief, one plan, one point of contact.",
+  },
+  {
+    title: "Transparent process",
+    body: "Clear milestones, honest timelines and pricing agreed before any work begins.",
+  },
+  {
+    title: "Results focus",
+    body: "Every project is tied to a business goal, and reported on leads and revenue, not likes.",
+  },
+];
+
 const markParts = [
   {
     title: "Two arcs",
@@ -34,8 +49,12 @@ export default function AboutPage() {
       <PageHero
         crumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
         eyebrow="About Ghia"
-        title="Growth is one problem. We treat it like one."
-        intro="Most businesses split growth across a marketplace agency, an SEO agency, a paid media agency, a web developer and now an AI vendor. Each reports a different number. We built Ghia to be the one team that owns the whole system."
+        title={
+          <>
+            A studio where <span className="grad">ideas</span> take shape.
+          </>
+        }
+        intro="Ghia Technologies blends strategy, design and technology to build brands that last — and the websites, campaigns and AI systems that make them grow."
         actions={
           <Button href={site.bookingUrl} size="lg" icon="arrow-right">
             Book a growth audit
@@ -43,8 +62,48 @@ export default function AboutPage() {
         }
       />
 
+      <Section className="!pt-4">
+        <Container>
+          <div className="grid gap-5 md:grid-cols-2">
+            <div className="glass rounded-[22px] p-7 sm:p-9">
+              <p className="t-label">Our story</p>
+              <h2 className="t-h2 mt-3 text-ink">Growth is one problem. We treat it like one.</h2>
+              <p className="t-body mt-4">
+                Too many businesses split their growth across a branding agency, a web developer, an
+                SEO team, a paid media agency and now an AI vendor — each reporting a different
+                number. Ghia brings that work together in one studio, so the brand, the website, the
+                campaigns and the follow-up are planned and judged as one system.
+              </p>
+            </div>
+            <div className="glass rounded-[22px] p-7 sm:p-9">
+              <p className="t-label">Vision</p>
+              <h2 className="t-h2 mt-3 text-ink">The only partner a growing business needs.</h2>
+              <p className="t-body mt-4">
+                We want great creative work and reliable growth systems to be within reach of every
+                ambitious business — not just the ones that can afford five agencies. That means
+                doing the work well, explaining it plainly and measuring ourselves on your results.
+              </p>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
       <Section>
-        <Container wide>
+        <Container>
+          <SectionHeader eyebrow="Why Ghia" title="What makes Ghia different." />
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {different.map((d) => (
+              <div key={d.title} className="glass rounded-[22px] p-7">
+                <h3 className="t-h3 text-ink">{d.title}</h3>
+                <p className="t-body-sm mt-2">{d.body}</p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section tone="sunken">
+        <Container>
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-5">
               <SectionHeader eyebrow="What we do" title="Engineers, marketers and designers on one team." />
@@ -67,15 +126,15 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      <Section tone="sunken">
-        <Container wide>
+      <Section>
+        <Container>
           <SectionHeader eyebrow="Principles" title="How we work." />
           <RuleColumns items={principles} className="mt-12" />
         </Container>
       </Section>
 
-      <Section tone="ink">
-        <Container wide>
+      <Section tone="sunken">
+        <Container>
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-5">
               <div className="mx-auto aspect-square w-full max-w-[380px] rounded-lg border border-line bg-raised p-[18%]">
@@ -101,7 +160,7 @@ export default function AboutPage() {
       </Section>
 
       <Section>
-        <Container wide>
+        <Container>
           <SectionHeader eyebrow="Commitments" title="What you can expect from us." />
           <RuleColumns items={commitments} className="mt-12" />
         </Container>

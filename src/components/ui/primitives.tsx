@@ -9,20 +9,12 @@ export function cx(...c: (string | false | null | undefined)[]) {
 
 /* ---------- Layout ---------- */
 
-export function Container({
-  className,
-  wide,
-  children,
-}: {
-  className?: string;
-  wide?: boolean;
-  children: ReactNode;
-}) {
+export function Container({ className, children }: { className?: string; children: ReactNode }) {
   return (
     <div
       className={cx(
         "mx-auto w-full px-4 sm:px-6 lg:px-8",
-        wide ? "max-w-[1440px]" : "max-w-[1264px]",
+        "max-w-[1264px]",
         className,
       )}
     >
@@ -49,9 +41,8 @@ export function Section({
     <section
       id={id}
       className={cx(
-        "relative py-20 sm:py-24 lg:py-32",
-        tone === "sunken" && "bg-sunken",
-        tone === "ink" && "theme-ink",
+        "relative py-16 sm:py-20 lg:py-24",
+        (tone === "sunken" || tone === "ink") && "bg-sunken",
         tone === "paper" && "bg-paper",
         className,
       )}
@@ -66,7 +57,7 @@ export function Section({
 
 export function Eyebrow({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <p className={cx("eyebrow", className)} data-scramble={typeof children === "string" ? "" : undefined}>
+    <p className={cx("eyebrow", className)}>
       {children}
     </p>
   );
@@ -99,7 +90,7 @@ export function SectionHeader({
     >
       <div className={cx("max-w-[44rem]", align === "center" && "mx-auto")}>
         {eyebrow && <Eyebrow className="mb-5">{eyebrow}</Eyebrow>}
-        <As className="t-h1 text-ink" data-split="words">
+        <As className="t-h1 text-ink">
           {title}
         </As>
         {intro && <p className="t-body-lg mt-5 max-w-[38rem]">{intro}</p>}
@@ -126,8 +117,8 @@ const buttonVariant: Record<ButtonVariant, string> = {
   primary: glowButton,
   accent: glowButton,
   secondary:
-    "border-white/20 bg-white/[0.03] text-ink backdrop-blur-sm hover:-translate-y-0.5 hover:border-cyan hover:text-cyan",
-  ghost: "border-transparent bg-transparent px-2 text-ink hover:text-cyan",
+    "border-line-control bg-transparent text-ink hover:-translate-y-0.5 hover:border-volt hover:text-volt-text",
+  ghost: "border-transparent bg-transparent px-2 text-ink hover:text-volt-text",
 };
 
 export function Button({
@@ -189,7 +180,7 @@ export function TextLink({
     <Link
       href={href}
       className={cx(
-        "group/link inline-flex items-center gap-1.5 text-[15px] font-medium text-ink transition-colors hover:text-cyan",
+        "group/link inline-flex items-center gap-1.5 text-[15px] font-medium text-ink transition-colors hover:text-volt-text",
         className,
       )}
     >
@@ -253,8 +244,8 @@ export function Card({
   interactive?: boolean;
 }) {
   const cls = cx(
-    "glass spotlight group/card relative flex flex-col rounded-[22px] p-6 sm:p-8",
-    (href || interactive) && "tilt",
+    "glass group/card relative flex flex-col rounded-[22px] p-6 sm:p-8",
+    (href || interactive) && "lift",
     className,
   );
   if (href) {

@@ -20,7 +20,7 @@ export default function PlaybooksPage() {
         intro="Practical notes from the work — methods you can use whether or not you hire us."
       />
       <Section>
-        <Container wide>
+        <Container>
           <PlaybookCards />
         </Container>
       </Section>

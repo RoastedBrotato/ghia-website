@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/sections/PageHero";
-import { FaqList } from "@/components/sections/Blocks";
+import { FaqList, Steps } from "@/components/sections/Blocks";
 import { CtaBand } from "@/components/layout/CtaBand";
 import { Icon } from "@/components/brand/Icon";
 import {
@@ -49,6 +49,7 @@ export default async function ServicePage({ params }: Props) {
   if (!s) notFound();
 
   const n = services.indexOf(s) + 1;
+  const pillar = pillars[s.pillar];
   const related = s.related.map(getService).filter(Boolean) as NonNullable<
     ReturnType<typeof getService>
   >[];
@@ -75,18 +76,17 @@ export default async function ServicePage({ params }: Props) {
           </>
         }
         aside={
-          <div className="glass relative overflow-hidden rounded-[26px] p-7 sm:p-9">
-            <div className="pointer-events-none absolute -right-16 -top-16 size-56 rounded-full bg-[radial-gradient(circle,rgba(0,200,255,0.22),transparent_70%)]" />
+          <div className="glass relative overflow-hidden rounded-[22px] p-7 sm:p-9">
             <div className="relative flex items-center justify-between">
               <span className="font-mono text-[12px] tracking-[0.24em] text-volt-text">
                 {String(n).padStart(2, "0")}
               </span>
-              <span className="grid size-12 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-cyan">
+              <span className="grid size-12 place-items-center rounded-full border border-line-strong text-cyan">
                 <Icon name={s.icon} className="size-6" />
               </span>
             </div>
             <h2 className="t-h2 relative mt-6 text-ink">{s.name}</h2>
-            <ul className="relative mt-6 grid gap-3" data-stagger>
+            <ul className="relative mt-6 grid gap-3">
               {s.list.map((item) => (
                 <li key={item} className="flex items-center gap-3 text-[15px] text-ink">
                   <Icon name="check" className="size-5 shrink-0 text-cyan" />
@@ -99,7 +99,7 @@ export default async function ServicePage({ params }: Props) {
       />
 
       <Section id="capabilities">
-        <Container wide>
+        <Container>
           <SectionHeader
             eyebrow="What we do"
             title={
@@ -110,28 +110,51 @@ export default async function ServicePage({ params }: Props) {
           />
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {s.capabilities.map((c, i) => (
-              <div
-                key={c.title}
-                className="reveal"
-                style={{ ["--reveal-delay" as string]: `${(i % 3) * 80}ms` }}
-              >
-                <Card className="h-full">
-                  <Num n={i + 1} />
-                  <h3 className="t-h3 mt-4 text-ink">{c.title}</h3>
-                  <p className="t-body-sm mt-2">{c.body}</p>
-                </Card>
-              </div>
+              <Card key={c.title} className="h-full">
+                <Num n={i + 1} />
+                <h3 className="t-h3 mt-4 text-ink">{c.title}</h3>
+                <p className="t-body-sm mt-2">{c.body}</p>
+              </Card>
             ))}
           </div>
         </Container>
       </Section>
 
       <Section tone="sunken">
-        <Container wide>
+        <Container>
+          <SectionHeader
+            eyebrow={`How it runs · ${pillar.name}`}
+            title="How a project runs, step by step."
+            intro="You see the work at every stage, and nothing moves forward until you've signed it off."
+          />
+          <Steps steps={pillar.process} className="mt-12" />
+        </Container>
+      </Section>
+
+      <Section>
+        <Container>
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
+            <div className="lg:col-span-5">
+              <SectionHeader eyebrow="Who it's for" title="A good fit if you're…" />
+            </div>
+            <div className="grid gap-4 lg:col-span-7">
+              {pillar.goodFit.map((f) => (
+                <div key={f} className="glass flex items-center gap-4 rounded-[18px] px-6 py-5">
+                  <Icon name="check" className="size-5 shrink-0 text-cyan" />
+                  <span className="text-[16px] text-ink">{f}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      <Section tone="sunken">
+        <Container>
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-5">
               <SectionHeader eyebrow="What you get" title="Clear from day one." />
-              <div className="reveal mt-10">
+              <div className="mt-10">
                 <Card>
                   <CheckList items={s.outcomes} />
                   <div className="mt-8 border-t border-line pt-6">
@@ -151,7 +174,7 @@ export default async function ServicePage({ params }: Props) {
       </Section>
 
       <Section>
-        <Container wide>
+        <Container>
           <SectionHeader
             eyebrow="Pairs well with"
             title="Part of one system."

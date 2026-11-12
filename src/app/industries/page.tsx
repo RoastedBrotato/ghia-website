@@ -26,7 +26,7 @@ export default function IndustriesPage() {
         }
       />
       <Section>
-        <Container wide>
+        <Container>
           <IndustryGrid />
           <p className="t-body mt-12 max-w-[40rem]">
             Don&rsquo;t see your industry? The same methods apply to most businesses that sell online

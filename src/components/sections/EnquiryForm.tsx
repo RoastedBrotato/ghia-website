@@ -9,7 +9,7 @@ import { site } from "@/lib/site";
 type Status = "idle" | "sending" | "sent" | "error";
 
 const field =
-  "w-full rounded-[14px] border border-white/10 bg-white/[0.04] px-4 py-3.5 text-[15px] text-ink placeholder:text-ink-subtle transition-[border-color,background-color] duration-200 focus:border-cyan/60 focus:bg-white/[0.06] focus:outline-none";
+  "w-full rounded-[14px] border border-line-strong bg-field px-4 py-3.5 text-[15px] text-ink placeholder:text-ink-subtle transition-[border-color,background-color] duration-200 focus:border-volt focus:outline-none";
 
 /**
  * Project enquiry form. Posts to the Worker at /api/enquiry, which emails it
@@ -83,7 +83,7 @@ export function EnquiryForm({ className }: { className?: string }) {
   if (status === "sent") {
     return (
       <div className={cx("glass flex flex-col items-start rounded-[26px] p-8 sm:p-10", className)} role="status">
-        <span className="grid size-14 place-items-center rounded-full border border-cyan/40 text-cyan shadow-[0_0_30px_-6px_rgba(0,200,255,0.7)]">
+        <span className="grid size-14 place-items-center rounded-full border border-cyan/40 text-cyan">
           <Icon name="check" className="size-7" />
         </span>
         <h3 className="t-h2 mt-6 text-ink">Thanks — we&rsquo;ve got it.</h3>
@@ -151,7 +151,7 @@ export function EnquiryForm({ className }: { className?: string }) {
           name="service"
           value={service}
           onChange={(e) => setService(e.target.value)}
-          className={cx(field, "appearance-none bg-[url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b9c9e1' stroke-width='1.75' stroke-linecap='round'%3E%3Cpath d='M7 10l5 5 5-5'/%3E%3C/svg%3E\")] bg-[length:18px] bg-[right_16px_center] bg-no-repeat pr-11", !service && "text-ink-subtle")}
+          className={cx(field, "appearance-none bg-[url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888d9b' stroke-width='1.75' stroke-linecap='round'%3E%3Cpath d='M7 10l5 5 5-5'/%3E%3C/svg%3E\")] bg-[length:18px] bg-[right_16px_center] bg-no-repeat pr-11", !service && "text-ink-subtle")}
         >
           <option value="">What do you need help with?</option>
           {pillarOrder.map((p) => (

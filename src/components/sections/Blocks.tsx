@@ -23,8 +23,7 @@ export function Steps({
       {steps.map((s, i) => (
         <li
           key={s.title}
-          className="reveal border-t border-volt pt-5"
-          style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}
+          className="border-t border-volt pt-5"
         >
           <Num n={i + 1} />
           <h3 className="t-h3 mt-4 text-ink">{s.title}</h3>
@@ -46,7 +45,7 @@ export function RuleColumns({
   return (
     <div className={cx("grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4", className)}>
       {items.map((p, i) => (
-        <div key={p.title} className="reveal border-t border-line-strong pt-5" style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}>
+        <div key={p.title} className="border-t border-line-strong pt-5">
           <Num n={i + 1} />
           <h3 className="t-h3 mt-4 text-ink">{p.title}</h3>
           <p className="t-body-sm mt-2 max-w-[18rem]">{p.body}</p>
@@ -60,7 +59,7 @@ export function IndustryGrid() {
   return (
     <div className="grid gap-4 sm:grid-cols-2">
       {industries.map((ind) => (
-        <div key={ind.slug} className="reveal">
+        <div key={ind.slug}>
         <Card href={`/industries/${ind.slug}/`} className="h-full min-h-[240px]">
           <div className="flex items-start justify-between gap-6">
             <IconTile name={ind.icon} />
@@ -84,7 +83,7 @@ export function PlaybookCards({ limit, exclude }: { limit?: number; exclude?: st
   return (
     <div className="grid gap-4 md:grid-cols-3">
       {items.map((p) => (
-        <div key={p.slug} className="reveal">
+        <div key={p.slug}>
         <Card href={`/playbooks/${p.slug}/`} className="h-full min-h-[300px]">
           <div className="flex items-center justify-between gap-4">
             <span className="t-label">{p.category}</span>

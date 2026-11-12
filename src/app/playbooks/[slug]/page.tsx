@@ -101,7 +101,7 @@ export default async function PlaybookPage({ params }: Props) {
       </article>
 
       <Section tone="sunken">
-        <Container wide>
+        <Container>
           <SectionHeader eyebrow="More playbooks" title="Keep reading." />
           <div className="mt-12">
             <PlaybookCards exclude={p.slug} />

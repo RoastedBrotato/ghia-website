@@ -2,11 +2,6 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
-import { RevealObserver } from "@/components/ui/RevealObserver";
-import { MotionDirector } from "@/components/motion/MotionDirector";
-import { Cursor } from "@/components/motion/Cursor";
-import { SmoothScroll } from "@/components/motion/SmoothScroll";
-import { SectionRail } from "@/components/motion/SectionRail";
 import { isPreview, site } from "@/lib/site";
 import "./globals.css";
 
@@ -56,8 +51,15 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#07152D",
+  themeColor: "#111827",
 };
+
+/**
+ * Runs before first paint so the saved theme never flashes. Light (soft
+ * white with navy hero and footer) is the default; a visitor's choice from
+ * the nav toggle is remembered.
+ */
+const themeScript = `try{var t=localStorage.getItem("theme");document.documentElement.dataset.theme=t==="dark"?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}`;
 
 const orgJsonLd = {
   "@context": "https://schema.org",
@@ -73,24 +75,17 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html
       lang="en-GB"
+      data-theme="light"
       suppressHydrationWarning
       className={`${interDisplay.variable} ${inter.variable} ${geistMono.variable}`}
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
-        <noscript>
-          <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
-        </noscript>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="min-h-dvh bg-paper text-ink">
         <Nav />
         <main id="main">{children}</main>
         <Footer />
-        <RevealObserver />
-        <MotionDirector />
-        <Cursor />
-        <SmoothScroll />
-        <SectionRail />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}

@@ -5,7 +5,18 @@ export type Pillar = "creative" | "growth" | "digital";
 /** Main categories. Each service is a sub-category with its own page. */
 export const pillars: Record<
   Pillar,
-  { name: string; eyebrow: string; title: string; accent: string; summary: string; hue: string }
+  {
+    name: string;
+    eyebrow: string;
+    title: string;
+    accent: string;
+    summary: string;
+    hue: string;
+    /** How a project in this category runs, shown on each service page */
+    process: { title: string; body: string }[];
+    /** Who this category is usually right for */
+    goodFit: string[];
+  }
 > = {
   creative: {
     name: "Creative",
@@ -14,6 +25,17 @@ export const pillars: Record<
     accent: "remember.",
     summary: "Brand identity, film and 3D — the work that makes people stop, look and remember you.",
     hue: "#9b7bff",
+    process: [
+      { title: "Brief & research", body: "We learn the business, the audience and the competition, and agree what the work has to achieve." },
+      { title: "Concepts", body: "Two or three distinct directions, each shown in real use — not just on a white page." },
+      { title: "Production", body: "One direction refined and produced in-house: design, shoot, edit, animate." },
+      { title: "Handover", body: "Final files, guidelines and cut-downs for every channel, ready for your team to use." },
+    ],
+    goodFit: [
+      "New brands getting ready to launch",
+      "Established businesses whose look no longer matches who they are",
+      "Teams that need campaign, film or 3D work produced to a deadline",
+    ],
   },
   growth: {
     name: "Growth",
@@ -22,6 +44,17 @@ export const pillars: Record<
     accent: "converts.",
     summary: "Strategy, paid media, search, social and marketplaces — run as one system, measured on revenue.",
     hue: "#00c8ff",
+    process: [
+      { title: "Audit", body: "Your channels, tracking and numbers reviewed, so we know where growth is leaking." },
+      { title: "Plan", body: "One roadmap ranked by impact, with the targets we'll be judged on." },
+      { title: "Launch", body: "Campaigns, content and listings set live with tracking you can check." },
+      { title: "Optimise & report", body: "Weekly changes, monthly reporting on leads and revenue, and a clear next step." },
+    ],
+    goodFit: [
+      "Businesses spending on ads without clear returns",
+      "Brands selling on Amazon, Walmart or their own store",
+      "Teams that want one partner across search, social and paid media",
+    ],
   },
   digital: {
     name: "Digital & AI",
@@ -30,6 +63,17 @@ export const pillars: Record<
     accent: "never sleep.",
     summary: "Websites, apps and AI agents that answer every enquiry — plus the support that keeps it all running.",
     hue: "#1678e8",
+    process: [
+      { title: "Discovery", body: "Goals, users, content and the tools you already use, mapped before anything is built." },
+      { title: "Design", body: "Wireframes and designs you review on real screens, desktop and mobile." },
+      { title: "Build & test", body: "Developed, connected to your systems and tested for speed, accessibility and security." },
+      { title: "Launch & support", body: "Go live with monitoring in place, then ongoing updates, fixes and improvements." },
+    ],
+    goodFit: [
+      "Businesses whose website is slow, dated or hard to update",
+      "Teams losing leads to missed calls and slow follow-up",
+      "Companies that need reliable hosting, maintenance and IT support",
+    ],
   },
 };
 

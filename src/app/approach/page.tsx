@@ -34,14 +34,14 @@ export default function ApproachPage() {
       />
 
       <Section>
-        <Container wide>
+        <Container>
           <SectionHeader eyebrow="Process" title="Five steps, repeated." />
           <Steps steps={processSteps} className="mt-14" />
         </Container>
       </Section>
 
       <Section tone="sunken">
-        <Container wide>
+        <Container>
           <SectionHeader
             eyebrow="Ways to work together"
             title="Start small or run the whole system."
@@ -53,8 +53,8 @@ export default function ApproachPage() {
                 key={m.name}
                 className={
                   i === 0
-                    ? "theme-ink reveal flex flex-col rounded-md p-6 sm:p-8"
-                    : "reveal glass flex flex-col rounded-[22px] p-6 sm:p-8"
+                    ? "flex flex-col rounded-[22px] border border-volt/50 bg-volt-soft p-6 sm:p-8"
+                    : "glass flex flex-col rounded-[22px] p-6 sm:p-8"
                 }
               >
                 <p className="t-label">{m.kind}</p>
@@ -75,14 +75,14 @@ export default function ApproachPage() {
       </Section>
 
       <Section>
-        <Container wide>
+        <Container>
           <SectionHeader eyebrow="Commitments" title="What you can expect from us." />
           <RuleColumns items={commitments} className="mt-12" />
         </Container>
       </Section>
 
       <Section tone="sunken">
-        <Container wide>
+        <Container>
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-4">
               <SectionHeader eyebrow="FAQ" title="Questions we hear." />

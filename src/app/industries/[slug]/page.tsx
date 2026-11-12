@@ -57,14 +57,13 @@ export default async function IndustryPage({ params }: Props) {
       />
 
       <Section>
-        <Container wide>
+        <Container>
           <SectionHeader eyebrow="The problem" title="Where growth gets stuck." />
           <div className="mt-12 grid gap-x-6 gap-y-12 md:grid-cols-3">
             {ind.challenges.map((c, i) => (
               <div
                 key={c.title}
-                className="reveal border-t border-line-strong pt-5"
-                style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}
+                className="border-t border-line-strong pt-5"
               >
                 <Num n={i + 1} />
                 <h3 className="t-h3 mt-4 text-ink">{c.title}</h3>
@@ -76,7 +75,7 @@ export default async function IndustryPage({ params }: Props) {
       </Section>
 
       <Section tone="sunken">
-        <Container wide>
+        <Container>
           <SectionHeader
             eyebrow="What we deploy"
             title="Growth and automation, working together."
@@ -85,7 +84,7 @@ export default async function IndustryPage({ params }: Props) {
             {ind.deploy.map((d) => {
               const svc = getService(d.service);
               return (
-                <div key={d.title} className="reveal">
+                <div key={d.title}>
                   <Card href={`/services/${d.service}/`} className="h-full">
                     <div className="flex items-start justify-between gap-6">
                       {svc && <IconTile name={svc.icon} />}
@@ -109,7 +108,7 @@ export default async function IndustryPage({ params }: Props) {
       </Section>
 
       <Section>
-        <Container wide>
+        <Container>
           <p className="t-label mb-6">Other industries</p>
           <ul className="divide-y divide-line border-y border-line">
             {others.map((o) => (
