@@ -7,7 +7,7 @@ import { Logo } from "@/components/brand/Logo";
 import { Icon } from "@/components/brand/Icon";
 import { SignalRings } from "@/components/brand/SignalRings";
 import { Button, Container, cx } from "@/components/ui/primitives";
-import { pillars, servicesByPillar, type Pillar } from "@/content/services";
+import { pillarOrder, pillars, services, servicesByPillar, type Pillar } from "@/content/services";
 import { industries } from "@/content/industries";
 import { site } from "@/lib/site";
 import { getLenis } from "@/lib/scroll";
@@ -109,10 +109,10 @@ export function Nav() {
     <header
       ref={headerRef}
       className={cx(
-        "sticky top-0 z-50 transition-[background-color,border-color] duration-300",
+        "sticky top-0 z-50 backdrop-blur-xl transition-[background-color,border-color] duration-300",
         scrolled || open || mobileOpen
-          ? "border-b border-line bg-paper"
-          : "border-b border-transparent bg-paper",
+          ? "border-b border-white/10 bg-[rgba(7,21,45,0.78)]"
+          : "border-b border-transparent bg-[rgba(7,21,45,0.5)]",
       )}
       onMouseLeave={() => {
         suppressHover.current = false;
@@ -223,20 +223,17 @@ function MenuServiceList({ pillar }: { pillar: Pillar }) {
   return (
     <div>
       <p className="t-label mb-4">{pillars[pillar].name}</p>
-      <ul className="grid gap-1">
+      <ul className="grid gap-0.5">
         {servicesByPillar(pillar).map((s) => (
           <li key={s.slug}>
             <Link
               href={`/services/${s.slug}/`}
-              className="group flex gap-4 rounded-sm p-3 transition-colors hover:bg-sunken"
+              className="group flex items-center gap-3 rounded-[12px] p-2 transition-colors hover:bg-sunken"
             >
-              <span className="grid size-10 shrink-0 place-items-center rounded-sm border border-line bg-paper text-ink">
-                <Icon name={s.icon} className="size-5" />
+              <span className="grid size-9 shrink-0 place-items-center rounded-full border border-line bg-paper text-ink transition-colors group-hover:border-cyan/50 group-hover:text-cyan">
+                <Icon name={s.icon} className="size-[18px]" />
               </span>
-              <span>
-                <span className="block text-[15px] font-medium leading-5 text-ink">{s.name}</span>
-                <span className="mt-1 block text-[13px] leading-5 text-ink-muted">{s.summary}</span>
-              </span>
+              <span className="text-[15px] leading-5 text-ink">{s.short}</span>
             </Link>
           </li>
         ))}
@@ -248,19 +245,18 @@ function MenuServiceList({ pillar }: { pillar: Pillar }) {
 function ServicesMenu() {
   return (
     <div className="grid grid-cols-12 gap-8">
-      <div className="col-span-4">
-        <MenuServiceList pillar="growth" />
-      </div>
-      <div className="col-span-4">
-        <MenuServiceList pillar="ai" />
-      </div>
-      <div className="col-span-4">
+      {pillarOrder.map((p) => (
+        <div key={p} className="col-span-3">
+          <MenuServiceList pillar={p} />
+        </div>
+      ))}
+      <div className="col-span-3">
         <MenuFeature
           eyebrow="Not sure where to start?"
-          title="Start with a growth audit."
-          body="We review your channels, data and workflows and hand you a prioritised plan."
+          title="Tell us the goal. We'll pick the mix."
+          body="One call, a clear plan, and a team that can run every part of it."
           href={site.bookingUrl}
-          cta="Book a growth audit"
+          cta="Start a project"
           secondary={{ href: "/services/", label: "All services" }}
         />
       </div>
@@ -373,9 +369,9 @@ function MobileMenu({ isActive }: { isActive: (href: string) => boolean }) {
                   {expanded === l.menu && (
                     <ul className="grid gap-1 pb-4">
                       {(l.menu === "services"
-                        ? [...servicesByPillar("growth"), ...servicesByPillar("ai")].map((s) => ({
+                        ? services.map((s) => ({
                             href: `/services/${s.slug}/`,
-                            label: s.name,
+                            label: s.short,
                             icon: s.icon,
                           }))
                         : industries.map((i) => ({

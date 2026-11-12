@@ -54,7 +54,7 @@ export default function ApproachPage() {
                 className={
                   i === 0
                     ? "theme-ink reveal flex flex-col rounded-md p-6 sm:p-8"
-                    : "reveal flex flex-col rounded-md border border-line bg-raised p-6 sm:p-8"
+                    : "reveal glass flex flex-col rounded-[22px] p-6 sm:p-8"
                 }
               >
                 <p className="t-label">{m.kind}</p>

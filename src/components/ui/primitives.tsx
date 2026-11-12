@@ -114,18 +114,19 @@ export function SectionHeader({
 type ButtonVariant = "primary" | "accent" | "secondary" | "ghost";
 
 const buttonBase =
-  "group/btn inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-sm border font-sans font-medium tracking-[-0.005em] transition-colors duration-200 ease-brand";
+  "group/btn inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border font-sans font-medium tracking-[-0.005em] transition-[transform,box-shadow,color,border-color,background-color] duration-300 ease-brand";
 const buttonSize = {
-  sm: "h-9 px-3.5 text-[14px]",
-  md: "h-11 px-5 text-[15px]",
-  lg: "h-[52px] px-[26px] text-[16px]",
+  sm: "h-9 px-4 text-[14px]",
+  md: "h-11 px-6 text-[15px]",
+  lg: "h-[54px] px-[30px] text-[16px]",
 };
+const glowButton =
+  "border-[#3a8dff]/60 bg-[linear-gradient(120deg,#0f6bd6_0%,#0a4aa6_100%)] text-white shadow-[0_12px_30px_-10px_rgba(22,120,232,0.7)] hover:-translate-y-0.5 hover:border-cyan/70 hover:shadow-[0_18px_40px_-10px_rgba(0,200,255,0.55)]";
 const buttonVariant: Record<ButtonVariant, string> = {
-  primary:
-    "border-transparent bg-btn text-white shadow-[0_0_0_0_var(--glow)] hover:bg-cyan hover:text-on-cyan hover:shadow-[0_0_24px_0_rgba(0,200,255,0.35)]",
-  accent:
-    "border-transparent bg-btn text-white hover:bg-cyan hover:text-on-cyan hover:shadow-[0_0_24px_0_rgba(0,200,255,0.35)]",
-  secondary: "border-line-control bg-transparent text-ink hover:border-cyan hover:text-cyan",
+  primary: glowButton,
+  accent: glowButton,
+  secondary:
+    "border-white/20 bg-white/[0.03] text-ink backdrop-blur-sm hover:-translate-y-0.5 hover:border-cyan hover:text-cyan",
   ghost: "border-transparent bg-transparent px-2 text-ink hover:text-cyan",
 };
 
@@ -215,7 +216,7 @@ export function Badge({
   return (
     <span
       className={cx(
-        "inline-flex h-6 items-center gap-1.5 whitespace-nowrap rounded-xs border px-2 font-mono text-[12px] font-medium tracking-[0.04em]",
+        "inline-flex h-6 items-center gap-1.5 whitespace-nowrap rounded-full border px-2.5 font-mono text-[12px] font-medium tracking-[0.04em]",
         tone === "default" && "border-line bg-sunken text-ink-muted",
         tone === "volt" && "border-transparent bg-volt-soft text-volt-text",
         tone === "solid" && "border-transparent bg-ink text-paper",
@@ -252,9 +253,8 @@ export function Card({
   interactive?: boolean;
 }) {
   const cls = cx(
-    "spotlight group/card relative flex flex-col rounded-md border border-line bg-raised p-6 sm:p-8 transition-[border-color,box-shadow] duration-200",
-    (href || interactive) &&
-      "hover:border-cyan/50 hover:shadow-[0_0_0_1px_rgba(0,200,255,0.15),0_12px_40px_-12px_rgba(22,120,232,0.45)]",
+    "glass spotlight group/card relative flex flex-col rounded-[22px] p-6 sm:p-8",
+    (href || interactive) && "tilt",
     className,
   );
   if (href) {

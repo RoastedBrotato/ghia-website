@@ -26,7 +26,8 @@ All in **`src/lib/site.ts`**:
 | `socials` | `#` | LinkedIn, Instagram, X, YouTube, Facebook profile URLs |
 
 Also:
-- `src/app/contact/page.tsx` — swap the "Email us to book" button / "Coming soon" card for the scheduler once it exists.
+- **Enquiry form email** — see "Enquiry form" below. Until the domain is onboarded, the form shows a pre-filled
+  email link instead of sending.
 - `src/app/privacy/page.tsx`, `src/app/terms/page.tsx` — placeholder legal text; have it reviewed.
 - Copy assumptions to confirm (they describe how Ghia works): fixed-price audits and monthly retainer terms
   (`src/content/approach.ts`), "you own everything / no lock-in" commitments.
@@ -38,7 +39,8 @@ site yet. Product mockups are labelled "Illustrative interface" and show no perf
 
 Copy lives in typed data files — edit these, not the page components:
 
-- `src/content/services.ts` — 9 services across the Growth and AI automation pillars
+- `src/content/services.ts` — 3 main categories (`pillars`: Creative, Growth, Digital & AI) and 11 services, each
+  with its own page at `/services/<slug>/`
 - `src/content/solutions.ts` — the three flagship AI solutions
 - `src/content/industries.ts` — industry pages
 - `src/content/approach.ts` — process, engagement models, principles, FAQs
@@ -79,3 +81,30 @@ NEXT_PUBLIC_SITE_URL=https://your-domain npm run deploy
 ```
 
 Then add the custom domain in the Cloudflare dashboard (Workers → ghia-website → Settings → Domains).
+
+Old service URLs from the first version redirect to their new homes via `public/_redirects`.
+
+## Enquiry form
+
+The form (`src/components/sections/EnquiryForm.tsx`, on `/contact/` and at the end of the homepage) posts to
+`POST /api/enquiry`, handled by the small Worker in `worker/index.ts`. Everything else is served straight from the
+static export (`run_worker_first: ["/api/*"]`).
+
+The Worker validates the fields, drops bots (a hidden honeypot field and a minimum fill time), and emails the
+enquiry to `ENQUIRY_TO` through **Cloudflare Email Service** (the `EMAIL` binding). Replies go straight to the
+visitor (`replyTo`). Service pages link to `/contact/?service=<slug>` to pre-select the service.
+
+**To turn on sending** (once the domain is on the Cloudflare account that deploys the site):
+
+```bash
+npx wrangler email sending enable ghiatechonlogies.com   # adds the SPF/DKIM records
+# then set ENQUIRY_FROM / ENQUIRY_TO in wrangler.jsonc if they change, and redeploy
+```
+
+Until then the endpoint answers `503` and the form offers a pre-filled `mailto:` link, so no enquiry is lost.
+
+Local testing: `npm run preview` (`wrangler dev`) simulates sends and writes the email to `.wrangler/tmp/email/`
+instead of delivering it. `next dev` has no Worker, so the form always shows the fallback there.
+After changing bindings in `wrangler.jsonc`, regenerate types with
+`npx wrangler types worker/worker-configuration.d.ts`.
+

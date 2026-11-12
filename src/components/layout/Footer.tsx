@@ -42,8 +42,8 @@ export function Footer() {
           <div className="lg:col-span-4">
             <Logo className="h-8 w-auto text-ink" />
             <p className="mt-6 max-w-[22rem] text-[15px] leading-6 text-ink-muted">
-              {site.tagline} Marketplaces, search, paid media and AI automation — one team,
-              measured on revenue.
+              {site.tagline} Brands, websites, films, campaigns and AI — one studio, measured on
+              revenue.
             </p>
             <a
               href={`mailto:${site.email}`}
@@ -54,15 +54,15 @@ export function Footer() {
           </div>
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-4 lg:col-span-8">
             <Col
-              title="Growth"
-              items={servicesByPillar("growth").map((s) => ({
+              title="Creative & Digital"
+              items={[...servicesByPillar("creative"), ...servicesByPillar("digital")].map((s) => ({
                 label: s.short,
                 href: `/services/${s.slug}/`,
               }))}
             />
             <Col
-              title="AI automation"
-              items={servicesByPillar("ai").map((s) => ({
+              title="Growth"
+              items={servicesByPillar("growth").map((s) => ({
                 label: s.short,
                 href: `/services/${s.slug}/`,
               }))}

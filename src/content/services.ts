@@ -1,6 +1,39 @@
 import type { IconName } from "@/components/brand/Icon";
 
-export type Pillar = "growth" | "ai";
+export type Pillar = "creative" | "growth" | "digital";
+
+/** Main categories. Each service is a sub-category with its own page. */
+export const pillars: Record<
+  Pillar,
+  { name: string; eyebrow: string; title: string; accent: string; summary: string; hue: string }
+> = {
+  creative: {
+    name: "Creative",
+    eyebrow: "Creative studio",
+    title: "Ideas people",
+    accent: "remember.",
+    summary: "Brand identity, film and 3D — the work that makes people stop, look and remember you.",
+    hue: "#9b7bff",
+  },
+  growth: {
+    name: "Growth",
+    eyebrow: "Marketing & growth",
+    title: "Attention that",
+    accent: "converts.",
+    summary: "Strategy, paid media, search, social and marketplaces — run as one system, measured on revenue.",
+    hue: "#00c8ff",
+  },
+  digital: {
+    name: "Digital & AI",
+    eyebrow: "Digital & AI",
+    title: "Systems that",
+    accent: "never sleep.",
+    summary: "Websites, apps and AI agents that answer every enquiry — plus the support that keeps it all running.",
+    hue: "#1678e8",
+  },
+};
+
+export const pillarOrder: Pillar[] = ["creative", "growth", "digital"];
 
 export type Service = {
   slug: string;
@@ -10,117 +43,341 @@ export type Service = {
   short: string;
   icon: IconName;
   summary: string;
+  /** The sub-services shown on the card, studio-style */
+  list: string[];
   headline: string;
   intro: string;
-  tags: string[];
   capabilities: { title: string; body: string }[];
   outcomes: string[];
   faqs: { q: string; a: string }[];
   related: string[];
 };
 
-export const pillars: Record<Pillar, { name: string; eyebrow: string; summary: string }> = {
-  growth: {
-    name: "Growth",
-    eyebrow: "Pillar 01 · Growth",
-    summary:
-      "Marketplaces, search, paid media and the website that converts them — run as one system.",
-  },
-  ai: {
-    name: "AI automation",
-    eyebrow: "Pillar 02 · AI automation",
-    summary:
-      "Agents and workflows that answer every enquiry, follow up every lead and take repetitive work off your team.",
-  },
-};
-
 export const services: Service[] = [
-  /* ------------------------------------------------------------------ Growth */
   {
-    slug: "amazon-walmart",
-    pillar: "growth",
-    name: "Amazon & Walmart",
-    short: "Amazon & Walmart",
-    icon: "storefront",
-    summary: "Listings, ads and inventory run as one P&L.",
-    headline: "Marketplaces, run as one P&L.",
+    slug: "branding-creative",
+    pillar: "creative",
+    name: "Branding & Creative",
+    short: "Branding & Creative",
+    icon: "brand",
+    summary: "Identities and ideas people remember.",
+    list: ["Brand Identity", "Creative Direction", "Campaign Concepts", "Corporate Branding"],
+    headline: "Brands people remember.",
     intro:
-      "We manage listings, advertising and inventory across Amazon and Walmart together, so growth in one place never creates a problem in another.",
-    tags: ["Seller Central", "Vendor Central", "DSP", "WFS"],
+      "Identity, direction and campaign ideas built on a clear strategy — so everything you put out looks, sounds and feels like one brand.",
     capabilities: [
       {
-        title: "Listing optimisation",
-        body: "Titles, bullets, images and A+ content written for how shoppers actually search and decide.",
+        title: "Brand identity",
+        body: "Logo, typography, colour, imagery and the guidelines that hold them together.",
       },
       {
-        title: "Sponsored ads and DSP",
-        body: "Campaign structure, bidding and keyword harvesting tied to contribution margin, not ACoS alone.",
+        title: "Creative direction",
+        body: "One point of view across shoots, campaigns, social and the website.",
       },
       {
-        title: "Walmart Marketplace and WFS",
-        body: "Account launch, catalogue setup and Walmart Fulfillment Services onboarding.",
+        title: "Campaign concepts",
+        body: "Big ideas with the channel plan to carry them — not just a key visual.",
       },
       {
-        title: "Inventory and forecasting",
-        body: "Reorder planning that keeps ad spend from pushing a best-seller out of stock.",
-      },
-      {
-        title: "Brand protection",
-        body: "Brand Registry, catalogue hygiene and monitoring for hijackers and listing changes.",
-      },
-      {
-        title: "One view of performance",
-        body: "Sales, ad spend and margin across both marketplaces in a single report.",
+        title: "Corporate branding",
+        body: "Stationery, decks, signage and templates your team can use without a designer.",
       },
     ],
     outcomes: [
-      "A catalogue audit with prioritised fixes in the first weeks",
-      "Ad structure you can read and audit yourself",
-      "Monthly reviews against revenue and margin, not impressions",
+      "A brand strategy workshop before any design starts",
+      "Full brand guidelines and source files you own",
+      "Launch assets ready for web, social and print",
     ],
     faqs: [
       {
-        q: "Do you work with sellers or vendors?",
-        a: "Both. We manage 3P Seller Central accounts and 1P Vendor Central relationships, and hybrid setups.",
+        q: "Can you refresh our brand rather than start over?",
+        a: "Yes. Most work is an evolution. We audit what you have, keep what's working and fix what isn't.",
       },
       {
-        q: "Do we need to be on both marketplaces?",
-        a: "No. Many brands start on Amazon and add Walmart once the catalogue and operations are ready. If Walmart isn't worth it for you yet, we'll say so.",
+        q: "How many logo concepts do we see?",
+        a: "Usually two or three distinct directions, each shown in real use, then we refine one together.",
       },
       {
-        q: "Who owns the accounts?",
-        a: "You do. We work inside your accounts with the access you grant, and you keep everything if we part ways.",
+        q: "Do you name brands too?",
+        a: "Yes — naming, taglines and tone of voice are part of our brand strategy work.",
       },
     ],
-    related: ["paid-media", "ai-operations", "web-development"],
+    related: ["design-development", "media-film-production", "social-content"],
+  },
+  {
+    slug: "media-film-production",
+    pillar: "creative",
+    name: "Media & Film Production",
+    short: "Media & Film",
+    icon: "film",
+    summary: "Films and video that move people.",
+    list: [
+      "TVCs & DVCs",
+      "Brand Films",
+      "Documentaries",
+      "Corporate Videos",
+      "Live Streaming",
+      "Film & Video Production",
+      "Post-Production",
+    ],
+    headline: "Films that move people.",
+    intro:
+      "From script to final grade — commercials, brand films and corporate video produced end to end, cut for every screen they'll run on.",
+    capabilities: [
+      {
+        title: "TVCs & DVCs",
+        body: "Broadcast and digital commercials, with cut-downs for every platform.",
+      },
+      {
+        title: "Brand films & documentaries",
+        body: "Longer stories about your people, product and purpose.",
+      },
+      {
+        title: "Corporate video",
+        body: "Recruitment, training, investor and event films.",
+      },
+      {
+        title: "Live streaming",
+        body: "Multi-camera streams for launches, conferences and events.",
+      },
+      {
+        title: "Production",
+        body: "Scripting, casting, locations, crew and shoot management.",
+      },
+      {
+        title: "Post-production",
+        body: "Editing, colour, sound design, subtitles and delivery in every format.",
+      },
+    ],
+    outcomes: [
+      "A treatment and production plan before the shoot",
+      "Master files plus cut-downs for each channel",
+      "Raw footage and project files on request",
+    ],
+    faqs: [
+      {
+        q: "Do you handle the whole production?",
+        a: "Yes — concept, script, crew, shoot and post. You can also bring us in for one stage only.",
+      },
+      {
+        q: "Can you shoot content for ads?",
+        a: "Yes. We plan shoots around the ad tests we'll run, so one day on set covers weeks of creative.",
+      },
+      {
+        q: "Who owns the footage?",
+        a: "You do. Usage rights for talent and music are agreed up front and documented.",
+      },
+    ],
+    related: ["animation-vfx", "social-content", "ppc-performance"],
+  },
+  {
+    slug: "animation-vfx",
+    pillar: "creative",
+    name: "3D Modeling, Animation & VFX",
+    short: "3D, Animation & VFX",
+    icon: "cube",
+    summary: "3D, animation and effects that stop the scroll.",
+    list: [
+      "3D Modeling",
+      "Product Visualization",
+      "Character Animation",
+      "Architectural Visualization",
+      "Motion Graphics",
+      "Visual Effects & Compositing",
+    ],
+    headline: "3D that stops the scroll.",
+    intro:
+      "Product renders, character animation and visual effects — made for ads, launches and listings where the visual has to do the selling.",
+    capabilities: [
+      {
+        title: "3D modeling",
+        body: "Accurate models of products, spaces and characters, ready to render or animate.",
+      },
+      {
+        title: "Product visualisation",
+        body: "Studio-quality renders and 360° spins without a photo shoot.",
+      },
+      {
+        title: "Character animation",
+        body: "Mascots and characters with personality, rigged for reuse.",
+      },
+      {
+        title: "Architectural visualisation",
+        body: "Interiors, exteriors and walkthroughs before anything is built.",
+      },
+      {
+        title: "Motion graphics",
+        body: "2D and 3D motion for ads, explainers and social.",
+      },
+      {
+        title: "VFX & compositing",
+        body: "Clean-up, CGI integration and effects for live-action footage.",
+      },
+    ],
+    outcomes: [
+      "Style frames approved before animation starts",
+      "Renders delivered in every size you need",
+      "Source scenes and models handed over",
+    ],
+    faqs: [
+      {
+        q: "Can 3D replace a product photo shoot?",
+        a: "Often, yes — especially for listings, colour variants and products that don't exist yet.",
+      },
+      {
+        q: "What do you need from us?",
+        a: "CAD files or reference photos, dimensions and materials. We'll take it from there.",
+      },
+      {
+        q: "Can renders be used on Amazon?",
+        a: "Yes. We follow marketplace image rules so renders can be used on your listings.",
+      },
+    ],
+    related: ["media-film-production", "amazon-walmart", "branding-creative"],
+  },
+  {
+    slug: "marketing-strategy",
+    pillar: "growth",
+    name: "Marketing & Strategy",
+    short: "Marketing & Strategy",
+    icon: "compass",
+    summary: "A plan that ties every channel to revenue.",
+    list: [
+      "Brand Strategy",
+      "Digital Marketing",
+      "Social Media Marketing",
+      "Outdoor Advertising",
+      "Campaign Planning",
+      "Media Planning",
+      "Campaign Management",
+    ],
+    headline: "A plan that ties every channel to revenue.",
+    intro:
+      "Positioning, channel mix and campaign plans built from your numbers — then run, measured and adjusted every month.",
+    capabilities: [
+      {
+        title: "Brand strategy",
+        body: "Positioning, audience and messaging that every campaign builds on.",
+      },
+      {
+        title: "Digital marketing",
+        body: "Search, social, email and paid media planned as one system.",
+      },
+      {
+        title: "Outdoor advertising",
+        body: "Billboards, transit and on-ground activations, planned with digital.",
+      },
+      {
+        title: "Campaign & media planning",
+        body: "Budgets, channels and flighting set against clear targets.",
+      },
+      {
+        title: "Campaign management",
+        body: "Day-to-day running, reporting and optimisation across every channel.",
+      },
+    ],
+    outcomes: [
+      "A written strategy and channel plan in the first month",
+      "Monthly reporting against revenue, not impressions",
+      "A testing backlog with a decision for every test",
+    ],
+    faqs: [
+      {
+        q: "Do you only plan, or run the campaigns too?",
+        a: "Both. We can hand over a plan, or run it end to end with our media and creative teams.",
+      },
+      {
+        q: "Do you do offline advertising?",
+        a: "Yes — outdoor, print and activations, planned and measured alongside digital.",
+      },
+      {
+        q: "How do you measure results?",
+        a: "We agree the numbers that matter up front — leads, sales, cost per acquisition — and report on them monthly.",
+      },
+    ],
+    related: ["ppc-performance", "social-content", "seo"],
+  },
+  {
+    slug: "ppc-performance",
+    pillar: "growth",
+    name: "PPC & Performance Marketing",
+    short: "PPC & Performance",
+    icon: "paid-social",
+    summary: "Meta & Google Ads, measured on revenue.",
+    list: ["Google & Meta Ads", "Paid Advertising", "Campaign Optimization", "Performance Analytics"],
+    headline: "Paid media, measured on revenue.",
+    intro:
+      "Creative, targeting and tracking built together, so every rupee, pound or dollar of spend can be traced to what it returned.",
+    capabilities: [
+      {
+        title: "Meta Ads",
+        body: "Facebook and Instagram campaigns structured for learning, with clear audience and creative tests.",
+      },
+      {
+        title: "Google Ads",
+        body: "Search, Performance Max, Shopping and YouTube, with negatives and feeds kept clean.",
+      },
+      {
+        title: "Creative for ads",
+        body: "Static and video concepts built around a testing plan, not one-off guesses.",
+      },
+      {
+        title: "Campaign optimisation",
+        body: "Bids, budgets and audiences adjusted weekly against cost per acquisition.",
+      },
+      {
+        title: "Tracking & analytics",
+        body: "Conversions API, enhanced conversions and GA4 so platforms learn from real sales.",
+      },
+      {
+        title: "Landing pages",
+        body: "Pages designed for the ad that sends the traffic, not your homepage.",
+      },
+    ],
+    outcomes: [
+      "A tracking audit before we spend anything",
+      "A creative testing calendar you can see",
+      "Reporting on revenue, cost per acquisition and payback",
+    ],
+    faqs: [
+      {
+        q: "Is there a minimum budget?",
+        a: "There's no fixed minimum, but if a budget is too small for the platforms to learn from, we'll tell you before you spend it.",
+      },
+      {
+        q: "Who owns the ad accounts?",
+        a: "You do. Always. We work as users on your accounts and billing stays with you.",
+      },
+      {
+        q: "Do you make the creative?",
+        a: "Yes. We plan, write and produce ad creative, and can work alongside your in-house team.",
+      },
+    ],
+    related: ["marketing-strategy", "design-development", "ai-automation"],
   },
   {
     slug: "seo",
     pillar: "growth",
-    name: "Search engine optimisation",
+    name: "Search Engine Optimisation",
     short: "SEO",
     icon: "seo",
-    summary: "Technical SEO and content that compounds.",
+    summary: "Search traffic that compounds.",
+    list: ["Technical SEO", "Keyword Strategy", "Content Production", "Local SEO", "AI Search Visibility"],
     headline: "Search traffic that compounds.",
     intro:
       "We fix what stops search engines from understanding your site, then build the content that earns rankings — in Google and in AI answers.",
-    tags: ["Technical", "Content", "Local", "AI search"],
     capabilities: [
       {
         title: "Technical SEO",
         body: "Crawling, indexation, site speed, Core Web Vitals, structured data and internal linking.",
       },
       {
-        title: "Keyword and topic strategy",
+        title: "Keyword & topic strategy",
         body: "A map of what your buyers search for, grouped by intent and tied to pages that convert.",
       },
       {
         title: "Content production",
         body: "Articles, guides and landing pages written by people who understand the subject.",
-      },
-      {
-        title: "On-page optimisation",
-        body: "Titles, headings, copy and media tuned page by page against real search data.",
       },
       {
         title: "Local SEO",
@@ -150,97 +407,148 @@ export const services: Service[] = [
         a: "We earn them through useful content and digital PR. We don't buy links or use networks that put your domain at risk.",
       },
     ],
-    related: ["web-development", "ui-ux", "paid-media"],
+    related: ["design-development", "marketing-strategy", "ppc-performance"],
   },
   {
-    slug: "paid-media",
+    slug: "social-content",
     pillar: "growth",
-    name: "Meta & Google Ads",
-    short: "Meta & Google Ads",
-    icon: "paid-social",
-    summary: "Creative-led paid media, measured on revenue.",
-    headline: "Paid media, measured on revenue.",
+    name: "Social & Content Management",
+    short: "Social & Content",
+    icon: "content",
+    summary: "Always-on content that builds an audience.",
+    list: [
+      "Social Media Strategy & Management",
+      "Content Creation",
+      "Influencer & PR Management",
+      "Community Management",
+    ],
+    headline: "Content that builds an audience.",
     intro:
-      "Creative, targeting and tracking built together, so every pound or dollar of spend can be traced to what it returned.",
-    tags: ["Meta", "PMax", "Shopping", "YouTube"],
+      "A content engine for your brand — planned monthly, produced in-house and managed daily, with influencers and PR working in the same direction.",
     capabilities: [
       {
-        title: "Creative strategy and production",
-        body: "Ad concepts, static and video, built around a testing plan rather than one-off guesses.",
+        title: "Social strategy & management",
+        body: "Platform plans, content calendars and daily publishing across your channels.",
       },
       {
-        title: "Meta Ads",
-        body: "Facebook and Instagram campaigns structured for learning, with clear audience and creative tests.",
+        title: "Content creation",
+        body: "Reels, carousels, photography and copy produced by our own team.",
       },
       {
-        title: "Google Ads",
-        body: "Search, Performance Max, Shopping and YouTube, with negative keywords and feeds kept clean.",
+        title: "Influencer & PR",
+        body: "Creator partnerships and press outreach that line up with your campaigns.",
       },
       {
-        title: "Tracking and attribution",
-        body: "Conversions API, enhanced conversions and GA4 set up so the platforms learn from real sales.",
-      },
-      {
-        title: "Landing pages",
-        body: "Pages designed for the ad that sends the traffic, not your homepage.",
-      },
-      {
-        title: "Testing programme",
-        body: "A written backlog of tests with a hypothesis, a result and a decision for each.",
+        title: "Community management",
+        body: "Comments and DMs answered quickly and in your voice.",
       },
     ],
     outcomes: [
-      "A tracking audit before we spend anything",
-      "A creative testing calendar you can see",
-      "Reporting on revenue, cost per acquisition and payback",
+      "A monthly content calendar you approve in advance",
+      "Monthly reports on reach, engagement and enquiries",
+      "Every asset and account stays in your name",
     ],
     faqs: [
       {
-        q: "Is there a minimum budget?",
-        a: "There's no fixed minimum, but if a budget is too small for the platforms to learn from, we'll tell you before you spend it.",
+        q: "Which platforms do you manage?",
+        a: "Instagram, Facebook, TikTok, LinkedIn, YouTube and X — we recommend where to focus after the audit.",
       },
       {
-        q: "Who owns the ad accounts?",
-        a: "You do. Always. We work as users on your accounts and billing stays with you.",
+        q: "How many posts a month?",
+        a: "It depends on goals and budget. We'd rather post less and make each piece count.",
       },
       {
-        q: "Do you make the creative?",
-        a: "Yes. We plan, write and produce ad creative, and can work alongside your in-house team or existing content.",
+        q: "Do you reply to comments and messages?",
+        a: "Yes. Community management is part of the service, with rules for what gets passed to your team.",
       },
     ],
-    related: ["ui-ux", "ai-sales-engine", "seo"],
+    related: ["media-film-production", "marketing-strategy", "ai-automation"],
   },
   {
-    slug: "ui-ux",
+    slug: "amazon-walmart",
     pillar: "growth",
-    name: "UI/UX design",
-    short: "UI/UX design",
-    icon: "ux-design",
-    summary: "Interfaces that turn traffic into customers.",
-    headline: "Interfaces that turn traffic into customers.",
+    name: "Amazon & Walmart",
+    short: "Amazon & Walmart",
+    icon: "storefront",
+    summary: "Listings, ads and inventory run as one P&L.",
+    list: ["Listing Optimisation", "Sponsored Ads & DSP", "Walmart Marketplace & WFS", "Inventory Planning", "Brand Protection"],
+    headline: "Marketplaces, run as one P&L.",
     intro:
-      "Research-led design for websites, stores and products — from the first wireframe to a design system your team can keep using.",
-    tags: ["Figma", "Design systems", "CRO"],
+      "We manage listings, advertising and inventory across Amazon and Walmart together, so growth in one place never creates a problem in another.",
     capabilities: [
       {
-        title: "Research and audits",
-        body: "Analytics, session recordings and customer interviews to find where people get stuck.",
+        title: "Listing optimisation",
+        body: "Titles, bullets, images and A+ content written for how shoppers actually search and decide.",
       },
       {
-        title: "Information architecture",
-        body: "Navigation and page structure that match how your customers think.",
+        title: "Sponsored ads & DSP",
+        body: "Campaign structure, bidding and keyword harvesting tied to contribution margin, not ACoS alone.",
       },
       {
-        title: "Wireframes and prototypes",
-        body: "Clickable flows tested before anything gets built.",
+        title: "Walmart Marketplace & WFS",
+        body: "Account launch, catalogue setup and Walmart Fulfillment Services onboarding.",
       },
       {
-        title: "Visual design",
-        body: "Interfaces that look like your brand and read clearly on every screen size.",
+        title: "Inventory & forecasting",
+        body: "Reorder planning that keeps ad spend from pushing a best-seller out of stock.",
       },
       {
-        title: "Design systems",
-        body: "Tokens, components and documentation so new pages stay consistent.",
+        title: "Brand protection",
+        body: "Brand Registry, catalogue hygiene and monitoring for hijackers and listing changes.",
+      },
+    ],
+    outcomes: [
+      "A catalogue audit with prioritised fixes in the first weeks",
+      "Ad structure you can read and audit yourself",
+      "Monthly reviews against revenue and margin, not impressions",
+    ],
+    faqs: [
+      {
+        q: "Do you work with sellers or vendors?",
+        a: "Both. We manage 3P Seller Central accounts and 1P Vendor Central relationships, and hybrid setups.",
+      },
+      {
+        q: "Do we need to be on both marketplaces?",
+        a: "No. Many brands start on Amazon and add Walmart once the catalogue and operations are ready. If Walmart isn't worth it for you yet, we'll say so.",
+      },
+      {
+        q: "Who owns the accounts?",
+        a: "You do. We work inside your accounts with the access you grant, and you keep everything if we part ways.",
+      },
+    ],
+    related: ["ppc-performance", "animation-vfx", "ai-automation"],
+  },
+  {
+    slug: "design-development",
+    pillar: "digital",
+    name: "Design & Development",
+    short: "Design & Development",
+    icon: "web-dev",
+    summary: "Websites and apps that look sharp and convert.",
+    list: ["Graphic Design", "UI/UX", "Website & App Development", "Motion Graphics"],
+    headline: "Websites and apps that convert.",
+    intro:
+      "Research-led design and fast, search-ready builds — marketing sites, stores and apps your team can actually edit.",
+    capabilities: [
+      {
+        title: "UI/UX design",
+        body: "Research, wireframes and prototypes tested before anything gets built.",
+      },
+      {
+        title: "Website development",
+        body: "Next.js, Webflow, WordPress or Shopify — chosen for who needs to edit it.",
+      },
+      {
+        title: "App development",
+        body: "Web and mobile apps, dashboards and internal tools with clean integrations.",
+      },
+      {
+        title: "Graphic design",
+        body: "Ads, social, print and presentation design that stays on-brand.",
+      },
+      {
+        title: "Motion graphics",
+        body: "Animated logos, UI motion and explainer pieces that make the product click.",
       },
       {
         title: "Conversion optimisation",
@@ -248,67 +556,9 @@ export const services: Service[] = [
       },
     ],
     outcomes: [
-      "A UX audit with annotated recommendations",
-      "Figma files and a component library you own",
-      "Designs handed over ready to build",
-    ],
-    faqs: [
-      {
-        q: "Do you only design, or build too?",
-        a: "Both. Our designers and developers work as one team, so what's designed is what ships.",
-      },
-      {
-        q: "Can you work with our existing brand?",
-        a: "Yes. We design within your brand guidelines, or help tighten them if they don't cover digital yet.",
-      },
-      {
-        q: "Do you design apps and dashboards?",
-        a: "Yes — web apps, internal tools and dashboards, as well as marketing sites and stores.",
-      },
-    ],
-    related: ["web-development", "seo", "paid-media"],
-  },
-  {
-    slug: "web-development",
-    pillar: "growth",
-    name: "Web development",
-    short: "Web development",
-    icon: "web-dev",
-    summary: "Fast, search-ready sites and stores.",
-    headline: "Fast, search-ready sites and stores.",
-    intro:
-      "Marketing sites, Shopify stores and web apps built for speed, search and easy editing — with integrations that keep your data in one place.",
-    tags: ["Next.js", "Shopify", "Headless", "CMS"],
-    capabilities: [
-      {
-        title: "Marketing websites",
-        body: "Built on Next.js, Webflow or WordPress depending on who needs to edit it.",
-      },
-      {
-        title: "Shopify stores",
-        body: "Themes, custom sections, apps and checkout extensions.",
-      },
-      {
-        title: "Performance",
-        body: "Core Web Vitals treated as a requirement, not an afterthought.",
-      },
-      {
-        title: "Integrations",
-        body: "CRM, payments, analytics, marketplaces and your internal tools, connected properly.",
-      },
-      {
-        title: "Content management",
-        body: "A CMS your team can use without opening a ticket.",
-      },
-      {
-        title: "Hosting and maintenance",
-        body: "Monitoring, updates, backups and a clear support process after launch.",
-      },
-    ],
-    outcomes: [
-      "A technical plan and timeline before build starts",
-      "Code, hosting and domains in your name",
-      "Documentation and a handover session at launch",
+      "A UX audit and technical plan before build starts",
+      "Figma files, code, hosting and domains in your name",
+      "Performance budgets tested before launch",
     ],
     faqs: [
       {
@@ -316,59 +566,53 @@ export const services: Service[] = [
         a: "It depends on who edits the site, what it needs to integrate with and your budget. We recommend one after the audit and explain why.",
       },
       {
-        q: "Will the site be fast?",
-        a: "We set performance budgets at the start and test against them before launch.",
-      },
-      {
         q: "Can you take over an existing site?",
         a: "Yes. We start with a code and performance audit, then fix, extend or rebuild depending on what we find.",
       },
+      {
+        q: "Do you only design, or build too?",
+        a: "Both. Our designers and developers work as one team, so what's designed is what ships.",
+      },
     ],
-    related: ["ui-ux", "seo", "custom-ai"],
+    related: ["branding-creative", "seo", "ppc-performance"],
   },
-
-  /* ---------------------------------------------------------- AI automation */
   {
-    slug: "ai-agents",
-    pillar: "ai",
-    name: "AI agents & receptionist",
-    short: "AI agents",
+    slug: "ai-automation",
+    pillar: "digital",
+    name: "AI Agents & Automation",
+    short: "AI & Automation",
     icon: "agent",
-    summary: "Voice and chat agents that answer every enquiry.",
-    headline: "AI agents that answer every enquiry.",
+    summary: "Agents that answer every enquiry and follow up every lead.",
+    list: ["AI Receptionist (voice & chat)", "AI Sales Engine", "Workflow Automation", "Custom AI Development"],
+    headline: "AI that answers every enquiry.",
     intro:
-      "Voice and chat agents that answer calls, reply on your website and WhatsApp, book appointments and hand over to your team when a person is needed.",
-    tags: ["Voice", "WhatsApp", "Web chat"],
+      "Voice and chat agents, lead follow-up and workflow automation connected to your tools — so no enquiry waits and your team stops copying data between systems.",
     capabilities: [
       {
-        title: "AI voice receptionist",
-        body: "Answers calls day and night, books appointments and routes urgent calls to the right person.",
+        title: "AI receptionist",
+        body: "Answers calls, web chat and WhatsApp day and night, books appointments and hands over to your team.",
       },
       {
-        title: "Website and WhatsApp agents",
-        body: "Reply instantly, answer questions from your own information and capture contact details.",
+        title: "AI sales engine",
+        body: "Every lead captured, answered in minutes, qualified and followed up until it books.",
       },
       {
-        title: "Customer support agents",
-        body: "Handle order status, FAQs and common requests, and open tickets for the rest.",
+        title: "Workflow automation",
+        body: "Orders, invoices, reports and data entry moved between your systems automatically.",
       },
       {
-        title: "Internal assistants",
-        body: "Give staff instant answers from your policies, SOPs and documents.",
+        title: "Custom AI development",
+        body: "Assistants and tools built on your own data, with clear guardrails.",
       },
       {
-        title: "Human handover",
-        body: "Clear rules for when the agent stops and a person takes over, with full context passed on.",
-      },
-      {
-        title: "Monitoring and guardrails",
-        body: "Conversation logs, review queues and limits on what the agent is allowed to say or do.",
+        title: "Monitoring & guardrails",
+        body: "Conversation logs, review queues and limits on what the AI is allowed to say or do.",
       },
     ],
     outcomes: [
-      "A pilot on one channel before rolling out to others",
+      "A pilot on one workflow or channel before rolling out",
       "Scripts, knowledge and escalation rules you approve",
-      "A log of every conversation your team can review",
+      "A log of every conversation and action your team can review",
     ],
     faqs: [
       {
@@ -384,181 +628,73 @@ export const services: Service[] = [
         a: "We use providers with business data terms, keep only what the workflow needs and agree retention rules with you before launch.",
       },
     ],
-    related: ["ai-sales-engine", "ai-operations", "custom-ai"],
+    related: ["it-tech-support", "ppc-performance", "design-development"],
   },
   {
-    slug: "ai-sales-engine",
-    pillar: "ai",
-    name: "AI sales engine",
-    short: "AI sales engine",
-    icon: "funnel",
-    summary: "Capture, qualify and follow up every lead.",
-    headline: "Turn more leads into customers.",
+    slug: "it-tech-support",
+    pillar: "digital",
+    name: "IT & Tech Support",
+    short: "IT & Tech Support",
+    icon: "support",
+    summary: "Websites, cloud and systems kept running.",
+    list: [
+      "Website Maintenance",
+      "Hosting & Backups",
+      "Cloud Solutions",
+      "Data Management",
+      "IT Infrastructure",
+      "Technical Support",
+      "Troubleshooting",
+    ],
+    headline: "Systems that just keep running.",
     intro:
-      "Every lead captured, answered in minutes, qualified against your criteria and followed up until it books — with your CRM kept up to date automatically.",
-    tags: ["CRM", "Lead routing", "Follow-up"],
+      "Hosting, maintenance, cloud and day-to-day support — so your website, data and tools stay fast, secure and backed up.",
     capabilities: [
       {
-        title: "Lead capture from every source",
-        body: "Website forms, ad lead forms, marketplaces, email and WhatsApp in one pipeline.",
+        title: "Website maintenance",
+        body: "Updates, security patches, uptime monitoring and small changes on request.",
       },
       {
-        title: "Instant first response",
-        body: "Every lead gets a relevant reply in minutes, at any hour.",
+        title: "Hosting & backups",
+        body: "Fast hosting with daily backups and tested restores.",
       },
       {
-        title: "Qualification",
-        body: "Questions that sort serious buyers from browsers, using criteria your sales team sets.",
+        title: "Cloud solutions",
+        body: "Google Workspace, Microsoft 365 and cloud infrastructure set up and managed.",
       },
       {
-        title: "Follow-up sequences",
-        body: "Personalised email, SMS and WhatsApp follow-ups that stop when someone replies.",
+        title: "Data management",
+        body: "Databases, migrations and access controls kept clean and documented.",
       },
       {
-        title: "Appointment booking",
-        body: "Qualified leads book straight into your team's calendars.",
+        title: "IT infrastructure",
+        body: "Devices, networks and accounts for growing teams.",
       },
       {
-        title: "CRM automation",
-        body: "Records created, updated and de-duplicated without manual data entry.",
+        title: "Support & troubleshooting",
+        body: "A clear support channel with agreed response times.",
       },
     ],
     outcomes: [
-      "A map of where leads arrive today and where they're lost",
-      "Qualification rules written with your sales team",
-      "A pipeline view your team trusts",
+      "An audit of your current setup and risks",
+      "A support channel with agreed response times",
+      "Monthly uptime, backup and security reports",
     ],
     faqs: [
       {
-        q: "Which CRMs do you work with?",
-        a: "HubSpot, Salesforce, Pipedrive, Zoho and others with an API. If you don't have a CRM yet, we'll help you choose one.",
+        q: "Can you support a site you didn't build?",
+        a: "Yes. We start with an audit, fix anything urgent, then take over maintenance.",
       },
       {
-        q: "Will it replace our sales team?",
-        a: "No. It handles speed and admin so your team spends its time on conversations that are ready to close.",
+        q: "Do you offer monthly support plans?",
+        a: "Yes — sized to your systems, with agreed response times.",
       },
       {
-        q: "Can we approve messages before they go out?",
-        a: "Yes. Templates and tone are agreed up front, and any step can require approval.",
+        q: "Where is our data hosted?",
+        a: "With reputable providers in the region you choose. Accounts and credentials stay in your name.",
       },
     ],
-    related: ["ai-agents", "paid-media", "ai-operations"],
-  },
-  {
-    slug: "ai-operations",
-    pillar: "ai",
-    name: "AI operations",
-    short: "AI operations",
-    icon: "workflow",
-    summary: "Workflows, documents and reporting on autopilot.",
-    headline: "Take the repetitive work off your team.",
-    intro:
-      "We find the manual, repeatable work in your operations — data entry, documents, reporting — and automate it with AI and integrations your team can see and trust.",
-    tags: ["Workflows", "Documents", "Dashboards"],
-    capabilities: [
-      {
-        title: "Workflow automation",
-        body: "Multi-step processes across your tools, with checks and approvals where they matter.",
-      },
-      {
-        title: "Document and invoice processing",
-        body: "Extract, validate and file data from PDFs, emails and forms.",
-      },
-      {
-        title: "CRM and ERP integrations",
-        body: "Systems that share data instead of relying on copy and paste.",
-      },
-      {
-        title: "Email and task automation",
-        body: "Triage inboxes, draft replies and create tasks for the right person.",
-      },
-      {
-        title: "Reporting and dashboards",
-        body: "Business performance in one place, refreshed automatically.",
-      },
-      {
-        title: "Forecasting",
-        body: "Sales and demand forecasts built from your own historical data.",
-      },
-    ],
-    outcomes: [
-      "A workflow audit ranking tasks by time saved and risk",
-      "Automations with logs and alerts, not black boxes",
-      "Documentation your team can maintain",
-    ],
-    faqs: [
-      {
-        q: "Which tools do you build with?",
-        a: "n8n, Make and Zapier for workflows, and custom code where those aren't enough. We pick what your team can maintain.",
-      },
-      {
-        q: "What if an automation makes a mistake?",
-        a: "Every workflow has validation, logging and alerts, and high-stakes steps keep a person in the loop.",
-      },
-      {
-        q: "Where should we start?",
-        a: "With one process that is high-volume, rule-based and painful. A quick win builds the case for the rest.",
-      },
-    ],
-    related: ["custom-ai", "ai-sales-engine", "amazon-walmart"],
-  },
-  {
-    slug: "custom-ai",
-    pillar: "ai",
-    name: "Custom AI development",
-    short: "Custom AI",
-    icon: "chip",
-    summary: "AI applications and features, built for your business.",
-    headline: "Custom AI, built for your business.",
-    intro:
-      "When off-the-shelf tools don't fit, we design and build AI applications, assistants and product features — tested, secure and maintainable.",
-    tags: ["LLM apps", "RAG", "APIs"],
-    capabilities: [
-      {
-        title: "AI applications",
-        body: "Web apps and internal tools with AI at the core, from prototype to production.",
-      },
-      {
-        title: "Knowledge assistants",
-        body: "Assistants that answer from your documents and data, with sources shown.",
-      },
-      {
-        title: "AI features in your product",
-        body: "Search, summarisation, drafting and classification added to software you already run.",
-      },
-      {
-        title: "API integrations",
-        body: "Leading model providers connected to your systems with the right guardrails.",
-      },
-      {
-        title: "Evaluation and testing",
-        body: "Test sets and quality checks so changes improve results instead of guessing.",
-      },
-      {
-        title: "Security and access control",
-        body: "Permissions, audit logs and data handling designed in from day one.",
-      },
-    ],
-    outcomes: [
-      "A scoped prototype before a full build",
-      "An evaluation set that measures quality",
-      "Code and infrastructure in your accounts",
-    ],
-    faqs: [
-      {
-        q: "Which AI models do you use?",
-        a: "We choose per use case from leading providers such as OpenAI and Anthropic, and design so models can be swapped as they improve.",
-      },
-      {
-        q: "How do you stop the AI making things up?",
-        a: "Grounding in your own data, showing sources, evaluation tests and clear limits on what it answers.",
-      },
-      {
-        q: "Who owns what you build?",
-        a: "You do — code, prompts, data and infrastructure.",
-      },
-    ],
-    related: ["ai-operations", "ai-agents", "web-development"],
+    related: ["design-development", "ai-automation", "seo"],
   },
 ];
 

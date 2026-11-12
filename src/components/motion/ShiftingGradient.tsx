@@ -94,7 +94,7 @@ export function ShiftingGradient({ className }: { className?: string }) {
       preserveDrawingBuffer: false,
       powerPreference: "low-power",
     });
-    if (!gl) return; // CSS fallback gradient stays visible
+    if (!gl || gl.isContextLost()) return; // CSS fallback gradient stays visible
 
     const compile = (type: number, src: string) => {
       const s = gl.createShader(type)!;
@@ -201,7 +201,10 @@ export function ShiftingGradient({ className }: { className?: string }) {
       ro.disconnect();
       window.removeEventListener("pointermove", onPointer);
       document.removeEventListener("visibilitychange", onVis);
-      gl.getExtension("WEBGL_lose_context")?.loseContext();
+      // Free GPU objects, but don't force-lose the context: a canvas whose
+      // context was lost can never get a new one, so a remount would be white.
+      gl.deleteBuffer(buf);
+      gl.deleteProgram(prog);
     };
   }, []);
 

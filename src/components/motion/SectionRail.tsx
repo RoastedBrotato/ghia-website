@@ -46,7 +46,7 @@ export function SectionRail() {
   return (
     <nav
       aria-label="Page sections"
-      className="fixed right-2 top-1/2 z-40 hidden -translate-y-1/2 xl:block"
+      className="fixed right-2 top-1/2 z-40 hidden -translate-y-1/2 min-[1560px]:block"
     >
       <ol className="flex flex-col items-end gap-2.5">
         {items.map((it, i) => (

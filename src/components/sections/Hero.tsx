@@ -1,17 +1,8 @@
 import { ShiftingGradient } from "@/components/motion/ShiftingGradient";
 import { SignalRings } from "@/components/brand/SignalRings";
 import { Button, Container } from "@/components/ui/primitives";
-import { site } from "@/lib/site";
 
-const ticker = [
-  "Amazon & Walmart",
-  "SEO",
-  "Meta & Google Ads",
-  "UI/UX",
-  "Web development",
-  "AI agents",
-  "Automation",
-];
+const ticker = ["Branding", "Web & apps", "Film", "3D & VFX", "Performance ads", "SEO", "Amazon", "AI agents"];
 
 export function Hero() {
   return (
@@ -38,24 +29,24 @@ export function Hero() {
       >
         <div className="max-w-[62rem] will-change-transform" data-parallax="0.22">
           <p className="eyebrow mb-7" data-scramble data-split-now>
-            Digital growth &amp; AI automation partner
+            Creative, growth &amp; AI studio
           </p>
-          <h1 className="t-display-xl text-ink" data-split="chars" data-split-now>
-            Growth, engineered.
+          <h1 className="t-display-xl text-ink" data-split="words" data-split-now>
+            Growth, <span className="grad">engineered.</span>
           </h1>
           <p className="t-body-lg hero-fade mt-7 max-w-[36rem]">
-            Amazon and Walmart, search, paid media, the website that converts it and the AI systems
-            that follow up every lead — run by one team, measured on revenue.
+            We design brands, build websites, produce films and run the campaigns and AI systems
+            that turn attention into customers — one studio, measured on revenue.
           </p>
           <div className="hero-fade mt-10 flex flex-wrap gap-3 [animation-delay:1.1s]">
             <span data-magnetic className="inline-block">
-              <Button href={site.bookingUrl} size="lg" icon="arrow-right">
-                Book a growth audit
+              <Button href="#start" size="lg" icon="arrow-right">
+                Start a project
               </Button>
             </span>
             <span data-magnetic className="inline-block">
-              <Button href="/approach/" size="lg" variant="secondary">
-                See how we work
+              <Button href="/services/" size="lg" variant="secondary">
+                Explore services
               </Button>
             </span>
           </div>

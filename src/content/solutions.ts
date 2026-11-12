@@ -28,7 +28,7 @@ export const solutions: Solution[] = [
       "Sends your team a summary of every conversation",
     ],
     bestFor: ["Clinics", "Real estate", "Service businesses"],
-    service: "ai-agents",
+    service: "ai-automation",
     mockup: "receptionist",
   },
   {
@@ -46,7 +46,7 @@ export const solutions: Solution[] = [
       "CRM updated without manual entry",
     ],
     bestFor: ["Real estate", "Professional services", "B2B sales teams"],
-    service: "ai-sales-engine",
+    service: "ai-automation",
     mockup: "pipeline",
   },
   {
@@ -64,7 +64,7 @@ export const solutions: Solution[] = [
       "Logs and alerts on every workflow",
     ],
     bestFor: ["E-commerce", "Clinics", "Finance and admin teams"],
-    service: "ai-operations",
+    service: "ai-automation",
     mockup: "workflow",
   },
 ];

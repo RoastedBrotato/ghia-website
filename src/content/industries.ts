@@ -39,17 +39,17 @@ export const industries: Industry[] = [
       {
         title: "AI receptionist for calls and WhatsApp",
         body: "Answers property questions and takes details at any hour.",
-        service: "ai-agents",
+        service: "ai-automation",
       },
       {
         title: "Lead qualification and viewing booking",
         body: "Budget, area, timing and finance checked before a viewing is booked into the right diary.",
-        service: "ai-sales-engine",
+        service: "ai-automation",
       },
       {
         title: "Meta and Google lead campaigns",
         body: "Valuation and listing campaigns that feed straight into your pipeline.",
-        service: "paid-media",
+        service: "ppc-performance",
       },
       {
         title: "Local SEO and listing pages",
@@ -84,12 +84,12 @@ export const industries: Industry[] = [
       {
         title: "AI receptionist",
         body: "Answers calls and messages, books and reschedules, and routes anything clinical to staff.",
-        service: "ai-agents",
+        service: "ai-automation",
       },
       {
         title: "Reminders and confirmations",
         body: "Automated messages that keep the diary accurate.",
-        service: "ai-operations",
+        service: "ai-automation",
       },
       {
         title: "Local SEO",
@@ -99,7 +99,7 @@ export const industries: Industry[] = [
       {
         title: "Google Ads",
         body: "Campaigns for high-value treatments, tracked to booked appointments.",
-        service: "paid-media",
+        service: "ppc-performance",
       },
     ],
     note: "We automate scheduling and administration only — never clinical decisions. Workflows are designed with your compliance lead around the privacy rules that apply to you.",
@@ -135,17 +135,17 @@ export const industries: Industry[] = [
       {
         title: "Shopify development and CRO",
         body: "A fast store designed to convert the traffic you pay for.",
-        service: "web-development",
+        service: "design-development",
       },
       {
         title: "Meta and Google Ads",
         body: "Creative-led campaigns measured on revenue across channels.",
-        service: "paid-media",
+        service: "ppc-performance",
       },
       {
         title: "AI customer support",
         body: "Order status, returns and FAQs answered instantly, with handover for the rest.",
-        service: "ai-agents",
+        service: "ai-automation",
       },
     ],
   },
@@ -175,12 +175,12 @@ export const industries: Industry[] = [
       {
         title: "Automated client intake",
         body: "Qualification, document collection and booking in one flow.",
-        service: "ai-sales-engine",
+        service: "ai-automation",
       },
       {
         title: "Document processing",
         body: "Data extracted from documents and filed where it belongs.",
-        service: "ai-operations",
+        service: "ai-automation",
       },
       {
         title: "SEO and content",
@@ -190,7 +190,7 @@ export const industries: Industry[] = [
       {
         title: "Knowledge assistant",
         body: "An internal assistant that answers from your own precedents and procedures.",
-        service: "custom-ai",
+        service: "ai-automation",
       },
     ],
   },
