@@ -93,7 +93,7 @@ export default function Home() {
           <Eyebrow className="mb-5">Services</Eyebrow>
           <h2 className="t-h1 text-ink">What we do</h2>
           <p className="t-body-lg mt-5 max-w-[40rem]">
-            Four divisions, eleven services, one team.
+            Four divisions, one team.
           </p>
           <div className="mt-10">
             <DivisionCards />

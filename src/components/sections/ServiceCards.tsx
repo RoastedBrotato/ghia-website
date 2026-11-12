@@ -7,8 +7,8 @@ const num = (n: number) => String(n).padStart(2, "0");
 const serviceNumber = (slug: string) => num(services.findIndex((s) => s.slug === slug) + 1);
 
 /**
- * The four divisions as cards: number, name, what's included and links to
- * the services inside. Used on the homepage.
+ * The four divisions as cards: number, name and summary. Used on the
+ * homepage.
  */
 export function DivisionCards() {
   return (
@@ -25,24 +25,6 @@ export function DivisionCards() {
               {d.name}
             </h3>
             <p className="mt-3 text-[15px] leading-6 text-ink-muted">{d.summary}</p>
-            <ul className="mt-6 grid gap-2 border-t border-line pt-5">
-              {servicesByPillar(p).map((s) => (
-                <li key={s.slug}>
-                  <Link
-                    href={`/services/${s.slug}/`}
-                    className="group flex items-baseline gap-3 text-[15px] leading-6 text-ink hover:text-volt-text"
-                  >
-                    <span className="font-mono text-[11px] tracking-[0.18em] text-ink-muted">
-                      {serviceNumber(s.slug)}
-                    </span>
-                    <span>{s.name}</span>
-                    <span aria-hidden className="ml-auto opacity-0 transition-opacity group-hover:opacity-100">
-                      →
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </div>
         );
       })}
