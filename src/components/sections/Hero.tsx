@@ -19,7 +19,7 @@ export function Hero() {
           dotRadius={12}
           className="pointer-events-none absolute bottom-0 right-0 h-[48%] w-auto [--ring-stroke:rgba(255,255,255,0.22)] md:h-[78%]"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,11,26,0.82)_0%,rgba(3,11,26,0.55)_38%,rgba(3,11,26,0.05)_70%,rgba(3,11,26,0)_100%)] max-md:bg-[linear-gradient(180deg,rgba(3,11,26,0.3)_0%,rgba(3,11,26,0.7)_55%,rgba(3,11,26,0.85)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,11,26,0.85)_0%,rgba(3,11,26,0.6)_38%,rgba(3,11,26,0.35)_70%,rgba(3,11,26,0.3)_100%)] max-md:bg-[linear-gradient(180deg,rgba(3,11,26,0.3)_0%,rgba(3,11,26,0.7)_55%,rgba(3,11,26,0.85)_100%)]" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-paper" />
       </div>
 

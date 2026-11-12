@@ -209,7 +209,7 @@ export function EnquiryForm({ className }: { className?: string }) {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="group/btn inline-flex h-[52px] items-center justify-center gap-2 rounded-full border border-[#3a8dff]/60 bg-[linear-gradient(120deg,#0f6bd6_0%,#0a4aa6_100%)] px-7 text-[16px] font-medium text-white shadow-[0_12px_30px_-10px_rgba(22,120,232,0.7)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-0.5 hover:border-cyan/70 hover:shadow-[0_18px_40px_-10px_rgba(0,200,255,0.55)] disabled:pointer-events-none disabled:opacity-70"
+          className="group/btn inline-flex h-[52px] items-center justify-center gap-2 btn-cta rounded-full border px-7 text-[16px] transition-[transform,box-shadow,border-color,filter] duration-300 hover:-translate-y-0.5 disabled:pointer-events-none disabled:opacity-70"
         >
           {status === "sending" ? "Sending…" : "Send enquiry"}
           <Icon

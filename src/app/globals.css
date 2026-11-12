@@ -644,3 +644,54 @@ html.lenis body {
 .orbit-counter {
   animation: orbit-spin 60s linear infinite reverse;
 }
+
+/* ---------- Primary call to action ----------
+   The one warm colour on the page. Everything else is navy, blue, cyan and
+   violet, so a calm orange (blue's complement) is enough to make the CTA the
+   button you see first. Kept flat with a soft shadow so it fits the site
+   rather than shouting. */
+@layer components {
+  .btn-cta {
+    color: #1f0c02;
+    border-color: transparent;
+    background: linear-gradient(135deg, #ffa462 0%, #ff8240 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.28),
+      0 8px 22px -12px rgba(255, 120, 50, 0.55);
+  }
+  .btn-cta:hover {
+    background: linear-gradient(135deg, #ffb075 0%, #ff8c4d 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.32),
+      0 12px 28px -12px rgba(255, 120, 50, 0.65);
+  }
+  .btn-cta:focus-visible {
+    outline-color: #ffb075;
+  }
+}
+
+/* ---------- Services carousel ---------- */
+.carousel-stage {
+  --r: 150px; /* radius of the ring the cards sit on */
+  height: 640px;
+}
+@media (min-width: 640px) {
+  .carousel-stage {
+    --r: 260px;
+    height: 560px;
+  }
+}
+@media (min-width: 1024px) {
+  .carousel-stage {
+    --r: 380px;
+    height: 540px;
+  }
+}
+.carousel-card {
+  transition:
+    transform 0.9s cubic-bezier(0.22, 0.8, 0.24, 1),
+    opacity 0.9s var(--ease-out),
+    filter 0.9s var(--ease-out);
+  backface-visibility: hidden;
+}
+

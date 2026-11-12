@@ -72,7 +72,7 @@ export function ServiceCatalog() {
               className={cx(
                 "flex h-11 shrink-0 items-center gap-2 rounded-full px-5 text-[15px] transition-[color,background,box-shadow] duration-300",
                 active === p
-                  ? "bg-[linear-gradient(120deg,#0f6bd6,#0a4aa6)] text-white shadow-[0_8px_24px_-8px_rgba(22,120,232,0.8)]"
+                  ? "bg-white/[0.12] text-white"
                   : "text-ink-muted hover:text-ink",
               )}
             >

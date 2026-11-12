@@ -114,14 +114,14 @@ export function SectionHeader({
 type ButtonVariant = "primary" | "accent" | "secondary" | "ghost";
 
 const buttonBase =
-  "group/btn inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border font-sans font-medium tracking-[-0.005em] transition-[transform,box-shadow,color,border-color,background-color] duration-300 ease-brand";
+  "group/btn inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border font-sans font-medium tracking-[-0.005em] transition-[transform,box-shadow,color,border-color,background-color,filter] duration-300 ease-brand";
 const buttonSize = {
   sm: "h-9 px-4 text-[14px]",
   md: "h-11 px-6 text-[15px]",
   lg: "h-[54px] px-[30px] text-[16px]",
 };
 const glowButton =
-  "border-[#3a8dff]/60 bg-[linear-gradient(120deg,#0f6bd6_0%,#0a4aa6_100%)] text-white shadow-[0_12px_30px_-10px_rgba(22,120,232,0.7)] hover:-translate-y-0.5 hover:border-cyan/70 hover:shadow-[0_18px_40px_-10px_rgba(0,200,255,0.55)]";
+  "btn-cta hover:-translate-y-0.5";
 const buttonVariant: Record<ButtonVariant, string> = {
   primary: glowButton,
   accent: glowButton,
