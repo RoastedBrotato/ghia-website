@@ -44,7 +44,7 @@ export function Nav() {
       </a>
       <Container className="flex h-[var(--nav-height)] items-center justify-between gap-6">
         <Link href="/" aria-label="Ghia Technologies — home" className="shrink-0 text-ink">
-          <Logo className="h-7 w-auto" />
+          <Logo className="h-8 w-auto sm:h-9" />
         </Link>
 
         <nav aria-label="Primary" className="hidden lg:block">

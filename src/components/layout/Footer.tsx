@@ -25,7 +25,7 @@ export function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <Link href="/" aria-label="Ghia Technologies — home" className="inline-block text-ink">
-              <Logo className="h-9 w-auto" />
+              <Logo className="h-11 w-auto" />
             </Link>
             <p className="mt-5 max-w-[18rem] text-[15px] leading-6 text-ink-muted">
               Creative, growth and AI studio — brands, websites, campaigns and the systems that turn

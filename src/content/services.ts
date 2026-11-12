@@ -1,8 +1,8 @@
 import type { IconName } from "@/components/brand/Icon";
 
-export type Pillar = "creative" | "growth" | "digital";
+export type Pillar = "creative" | "growth" | "commerce" | "digital";
 
-/** Main categories. Each service is a sub-category with its own page. */
+/** The four divisions. Each service is a sub-category with its own page. */
 export const pillars: Record<
   Pillar,
   {
@@ -19,11 +19,11 @@ export const pillars: Record<
   }
 > = {
   creative: {
-    name: "Creative",
-    eyebrow: "Creative studio",
+    name: "Creative & Production",
+    eyebrow: "Creative & production",
     title: "Ideas people",
     accent: "remember.",
-    summary: "Brand identity, film and 3D — the work that makes people stop, look and remember you.",
+    summary: "Brand identity, creative direction, film production, 3D modelling, animation, VFX and graphic design.",
     hue: "#9b7bff",
     process: [
       { title: "Brief & research", body: "We learn the business, the audience and the competition, and agree what the work has to achieve." },
@@ -38,11 +38,11 @@ export const pillars: Record<
     ],
   },
   growth: {
-    name: "Growth",
+    name: "Marketing & Growth",
     eyebrow: "Marketing & growth",
     title: "Attention that",
     accent: "converts.",
-    summary: "Strategy, paid media, search, social and marketplaces — run as one system, measured on revenue.",
+    summary: "Digital marketing, Google & Meta Ads, SEO, social media management, content strategy and campaign management.",
     hue: "#00c8ff",
     process: [
       { title: "Audit", body: "Your channels, tracking and numbers reviewed, so we know where growth is leaking." },
@@ -52,16 +52,35 @@ export const pillars: Record<
     ],
     goodFit: [
       "Businesses spending on ads without clear returns",
-      "Brands selling on Amazon, Walmart or their own store",
+      "Brands that need a steady stream of content and campaigns",
       "Teams that want one partner across search, social and paid media",
     ],
   },
+  commerce: {
+    name: "E-commerce & Marketplace",
+    eyebrow: "E-commerce & marketplace",
+    title: "Marketplaces that",
+    accent: "sell.",
+    summary: "Amazon and Walmart marketplace management, listing optimisation, advertising, inventory planning and brand protection.",
+    hue: "#ffa462",
+    process: [
+      { title: "Account audit", body: "Catalogue, listings, ads and inventory reviewed, with the fixes ranked by revenue impact." },
+      { title: "Fix & optimise", body: "Listings rewritten, images and A+ content upgraded, catalogue errors cleaned up." },
+      { title: "Advertise", body: "Sponsored ads and DSP structured around margin, with stock levels watched alongside spend." },
+      { title: "Protect & report", body: "Brand monitoring, reorder planning and monthly reviews against revenue and margin." },
+    ],
+    goodFit: [
+      "Brands selling on Amazon, Walmart or both",
+      "Sellers whose ad spend is growing faster than profit",
+      "Brands launching on a new marketplace",
+    ],
+  },
   digital: {
-    name: "Digital & AI",
-    eyebrow: "Digital & AI",
+    name: "Technology & Digital Solutions",
+    eyebrow: "Technology & digital",
     title: "Systems that",
     accent: "never sleep.",
-    summary: "Websites, apps and AI agents that answer every enquiry — plus the support that keeps it all running.",
+    summary: "Website and app development, UI/UX, AI agents, workflow automation, cloud solutions, hosting and IT support.",
     hue: "#1678e8",
     process: [
       { title: "Discovery", body: "Goals, users, content and the tools you already use, mapped before anything is built." },
@@ -77,7 +96,7 @@ export const pillars: Record<
   },
 };
 
-export const pillarOrder: Pillar[] = ["creative", "growth", "digital"];
+export const pillarOrder: Pillar[] = ["creative", "growth", "commerce", "digital"];
 
 export type Service = {
   slug: string;
@@ -510,7 +529,7 @@ export const services: Service[] = [
   },
   {
     slug: "amazon-walmart",
-    pillar: "growth",
+    pillar: "commerce",
     name: "Amazon & Walmart",
     short: "Amazon & Walmart",
     icon: "storefront",

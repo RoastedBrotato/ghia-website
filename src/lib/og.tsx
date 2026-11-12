@@ -4,8 +4,7 @@ import { join } from "node:path";
 
 export const ogSize = { width: 1200, height: 630 };
 
-const MARK_PATH =
-  "M76.10,12.73 A45.5,45.5 0 1 0 95.50,50.00 M63.77,30.34 A24,24 0 1 0 74.00,50.00 M95.5,50 H74";
+import { FOLD_PATH, MARK_COLORS, MARK_PATH } from "@/components/brand/Logo";
 
 /** Brand OG card: ink ground, signal rings bottom-right, mono eyebrow, display headline. */
 export async function renderOg({ eyebrow, title }: { eyebrow: string; title: string }) {
@@ -54,16 +53,16 @@ export async function renderOg({ eyebrow, title }: { eyebrow: string; title: str
           <circle cx={W - outer * Math.cos(a)} cy={H - outer * Math.sin(a)} r={11} fill="#1678E8" />
         </svg>
 
-        <svg width="56" height="56" viewBox="-5 -5 110 110">
-          <path
-            d={MARK_PATH}
-            fill="none"
-            stroke="#FFFFFF"
-            strokeWidth="8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <circle cx="91.57" cy="31.49" r="6.5" fill="#1678E8" />
+        <svg width="64" height="63" viewBox="126 145 974 960">
+          <defs>
+            <linearGradient id="g" x1="150" y1="1050" x2="1100" y2="150" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stopColor={MARK_COLORS.light} />
+              <stop offset="0.45" stopColor={MARK_COLORS.mid} />
+              <stop offset="1" stopColor={MARK_COLORS.deep} />
+            </linearGradient>
+          </defs>
+          <path d={MARK_PATH} fill="url(#g)" />
+          <path d={FOLD_PATH} fill={MARK_COLORS.fold} fillOpacity={0.35} />
         </svg>
 
         <div style={{ display: "flex", flexDirection: "column", maxWidth: 820 }}>

@@ -7,12 +7,12 @@ import {
   Eyebrow,
   IconTile,
 } from "@/components/ui/primitives";
-import { ServiceCards } from "@/components/sections/ServiceCards";
+import { DivisionCards } from "@/components/sections/ServiceCards";
 import { solutions } from "@/content/solutions";
 import { site } from "@/lib/site";
 
 /**
- * Home is deliberately plain: showreel → who we are → what we do → flagship
+ * Home is deliberately plain: hero → who we are → what we do → flagship
  * solutions → how we work → one ask. No scroll effects or animation; every
  * detail lives on its own page.
  */
@@ -39,28 +39,9 @@ const capabilities = [
 export default function Home() {
   return (
     <>
-      {/* Showreel + hero share one navy band */}
+      {/* Hero on the navy band */}
       <div className="theme-dark hero-glow">
-        <section className="pt-12 sm:pt-16">
-          <Container>
-            <Eyebrow className="mb-4">Showreel</Eyebrow>
-            <div className="glass mx-auto max-w-[960px] rounded-[22px] p-2 sm:p-3">
-              <video
-                className="block aspect-video w-full rounded-[14px] bg-black object-cover"
-                src="/motion/reel.mp4"
-                poster="/motion/reel.jpg"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label="Ghia Technologies showreel"
-              />
-            </div>
-          </Container>
-        </section>
-
-        <section className="pb-20 pt-16 sm:pb-28 sm:pt-24">
+        <section className="pb-20 pt-20 sm:pb-28 sm:pt-28">
           <Container>
             <Eyebrow className="mb-5">Creative, growth &amp; AI studio</Eyebrow>
             <h1 className="t-display-xl max-w-[56rem] text-ink">
@@ -104,8 +85,16 @@ export default function Home() {
         <Container>
           <Eyebrow className="mb-5">Services</Eyebrow>
           <h2 className="t-h1 text-ink">What we do</h2>
+          <p className="t-body-lg mt-5 max-w-[40rem]">
+            Four divisions, eleven services, one team.
+          </p>
           <div className="mt-10">
-            <ServiceCards />
+            <DivisionCards />
+          </div>
+          <div className="mt-8">
+            <Button href="/services/" variant="secondary">
+              All services
+            </Button>
           </div>
         </Container>
       </section>

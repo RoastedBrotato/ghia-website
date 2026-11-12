@@ -30,16 +30,16 @@ const different = [
 
 const markParts = [
   {
-    title: "Two arcs",
-    body: "Reach that ripples outward across every channel a brand sells on — marketplaces, search, social.",
+    title: "One ribbon",
+    body: "The G is a single folded band: every service made by one team, with no hand-offs between agencies.",
   },
   {
-    title: "One crossbar",
-    body: "One team connecting the channels, closing the G. Everything runs through one system.",
+    title: "The fold",
+    body: "Where the ribbon turns under itself, ideas become execution and creative work becomes growth.",
   },
   {
-    title: "The signal dot",
-    body: "The result that leaves the system. The same dot sits over the i in our name.",
+    title: "The open G",
+    body: "Left open on the right, always moving forward with room to grow.",
   },
 ];
 
@@ -138,11 +138,11 @@ export default function AboutPage() {
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-5">
               <div className="mx-auto aspect-square w-full max-w-[380px] rounded-lg border border-line bg-raised p-[18%]">
-                <Mark className="size-full text-ink" title="The Ghia Signal G" />
+                <Mark className="size-full" title="The Ghia G" />
               </div>
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
-              <SectionHeader eyebrow="The mark" title="Arcs, one crossbar, one dot." />
+              <SectionHeader eyebrow="The mark" title="One ribbon, folded into a G." />
               <ol className="mt-10 divide-y divide-line border-y border-line">
                 {markParts.map((p, i) => (
                   <li key={p.title} className="grid grid-cols-[3rem_1fr] gap-2 py-6">

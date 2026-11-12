@@ -10,7 +10,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Branding, design and development, film, 3D and VFX, marketing strategy, paid media, SEO, Amazon & Walmart, social, AI automation and IT support — one studio.",
+    "Creative & Production, Marketing & Growth, E-commerce & Marketplace, and Technology & Digital Solutions — eleven services from one studio.",
 };
 
 export default function ServicesPage() {
@@ -24,7 +24,7 @@ export default function ServicesPage() {
             Everything your brand <span className="grad">needs</span>.
           </>
         }
-        intro="Eleven services under one roof. Pick a single service, or let us run the whole system so every part works with the others."
+        intro="Four divisions, eleven services, one roof. Pick a single service, or let us run the whole system so every part works with the others."
         actions={
           <>
             <Button href={site.bookingUrl} size="lg">

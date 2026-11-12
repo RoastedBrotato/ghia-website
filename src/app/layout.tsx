@@ -31,6 +31,13 @@ const geistMono = localFont({
   display: "swap",
 });
 
+/** Only used for the "Ghia Technologies" wordmark in the logo. */
+const outfit = localFont({
+  src: [{ path: "../fonts/Outfit-Medium.woff2", weight: "500", style: "normal" }],
+  variable: "--font-outfit",
+  display: "block",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
@@ -66,7 +73,7 @@ const orgJsonLd = {
   "@type": "Organization",
   name: site.name,
   url: site.url,
-  logo: `${site.url}/brand/ghia-logo-primary.svg`,
+  logo: `${site.url}/brand/ghia-logo.png`,
   slogan: site.tagline,
   email: site.email,
 };
@@ -77,7 +84,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       lang="en-GB"
       data-theme="light"
       suppressHydrationWarning
-      className={`${interDisplay.variable} ${inter.variable} ${geistMono.variable}`}
+      className={`${interDisplay.variable} ${inter.variable} ${geistMono.variable} ${outfit.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
