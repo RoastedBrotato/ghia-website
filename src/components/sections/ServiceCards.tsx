@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { IconTile } from "@/components/ui/primitives";
+import { Button, IconTile } from "@/components/ui/primitives";
 import { pillarOrder, pillars, services, servicesByPillar } from "@/content/services";
 
 const num = (n: number) => String(n).padStart(2, "0");
@@ -7,8 +7,8 @@ const num = (n: number) => String(n).padStart(2, "0");
 const serviceNumber = (slug: string) => num(services.findIndex((s) => s.slug === slug) + 1);
 
 /**
- * The four divisions as cards: number, name and summary. Used on the
- * homepage.
+ * The four divisions as cards: number, name, summary and an "Explore more"
+ * button to that division on the services page. Used on the homepage.
  */
 export function DivisionCards() {
   return (
@@ -25,6 +25,11 @@ export function DivisionCards() {
               {d.name}
             </h3>
             <p className="mt-3 text-[15px] leading-6 text-ink-muted">{d.summary}</p>
+            <div className="mt-auto pt-6">
+              <Button href={`/services/#${p}`} variant="secondary" icon="arrow-right">
+                Explore more
+              </Button>
+            </div>
           </div>
         );
       })}
