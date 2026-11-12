@@ -559,6 +559,17 @@ html.lenis body {
 .grad:has([data-word]) {
   background-image: none;
 }
+/* background-clip: text only paints inside the element's box, and descenders
+   (g, j, p, y) hang below it — extend the box downward so they get the
+   gradient too. Inline spans don't move the layout; split word boxes
+   (inline-block) cancel the extra height with a negative margin. */
+.grad {
+  padding-bottom: 0.18em;
+}
+.grad [data-word] {
+  padding-bottom: 0.18em;
+  margin-bottom: -0.18em;
+}
 
 /* Frosted glass surface: translucent fill, hairline edge, top highlight. */
 .glass {
