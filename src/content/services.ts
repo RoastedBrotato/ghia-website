@@ -768,3 +768,62 @@ export const services: Service[] = [
 
 export const getService = (slug: string) => services.find((s) => s.slug === slug);
 export const servicesByPillar = (p: Pillar) => services.filter((s) => s.pillar === p);
+
+/** Services page: one band per division, in the client's layout. */
+export const pillarBands: Record<
+  Pillar,
+  { title: string; accent: string; body: string; items: string[] }
+> = {
+  creative: {
+    title: "Bring ideas to",
+    accent: "life",
+    body: "From concept to the screen, we create visual work that people notice, remember and act on.",
+    items: [
+      "Brand identity & creative direction",
+      "Film production & storytelling",
+      "3D modelling & animation",
+      "VFX & motion graphics",
+      "Graphic design",
+      "Campaign concepts",
+    ],
+  },
+  growth: {
+    title: "Grow your",
+    accent: "brand",
+    body: "Data-driven marketing that attracts the right audience, keeps them engaged and turns them into customers.",
+    items: [
+      "Digital marketing strategy",
+      "Google & Meta Ads",
+      "SEO",
+      "Social media management",
+      "Content strategy",
+      "Campaign management",
+    ],
+  },
+  commerce: {
+    title: "Sell smarter, grow",
+    accent: "faster",
+    body: "End-to-end marketplace management to grow your sales on Amazon and Walmart and protect your brand.",
+    items: [
+      "Amazon & Walmart management",
+      "Listing optimisation",
+      "Advertising & promotions",
+      "Inventory planning",
+      "Brand protection",
+      "A+ content & storefronts",
+    ],
+  },
+  digital: {
+    title: "Build for what’s",
+    accent: "next",
+    body: "Websites, apps and AI systems that automate the busywork and scale with your business.",
+    items: [
+      "Website & app development",
+      "UI/UX design",
+      "AI agents & automation",
+      "Cloud solutions",
+      "Hosting & IT support",
+      "Integrations & workflows",
+    ],
+  },
+};

@@ -1,170 +1,168 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHero } from "@/components/sections/PageHero";
-import { RuleColumns } from "@/components/sections/Blocks";
+import { ArrowSteps } from "@/components/sections/Blocks";
 import { CtaBand } from "@/components/layout/CtaBand";
-import { Mark } from "@/components/brand/Logo";
-import { Button, Container, Num, Section, SectionHeader } from "@/components/ui/primitives";
-import { commitments, principles } from "@/content/approach";
-import { site } from "@/lib/site";
+import { AboutVisual, DisciplinesVisual } from "@/components/brand/PageVisuals";
+import { Icon, type IconName } from "@/components/brand/Icon";
+import { Button, Container, Section } from "@/components/ui/primitives";
+import { pillarOrder, pillars } from "@/content/services";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Ghia Technologies is a digital growth and AI automation partner: one team running marketplaces, search, paid media, web and AI systems, measured on revenue.",
+    "Ghia Technologies is a creative and technology studio: creative, marketing, e-commerce and technology brought together under one roof to help brands grow.",
 };
 
-const different = [
-  {
-    title: "One integrated team",
-    body: "Brand, web, film, marketing and AI under one roof — one brief, one plan, one point of contact.",
-  },
-  {
-    title: "Transparent process",
-    body: "Clear milestones, honest timelines and pricing agreed before any work begins.",
-  },
-  {
-    title: "Results focus",
-    body: "Every project is tied to a business goal, and reported on leads and revenue, not likes.",
-  },
+const why: { icon: IconName; title: string; body: string }[] = [
+  { icon: "spark", title: "End-to-end expertise", body: "One studio for the idea, the build and the growth." },
+  { icon: "users", title: "A collaborative approach", body: "A team that works as one — with yours." },
+  { icon: "analytics", title: "Data-driven results", body: "Strategy backed by numbers you can check." },
+  { icon: "diamond", title: "Innovation first", body: "New tools adopted when they help, not for show." },
 ];
 
-const markParts = [
-  {
-    title: "One ribbon",
-    body: "The G is a single folded band: every service made by one team, with no hand-offs between agencies.",
-  },
-  {
-    title: "The fold",
-    body: "Where the ribbon turns under itself, ideas become execution and creative work becomes growth.",
-  },
-  {
-    title: "The open G",
-    body: "Left open on the right, always moving forward with room to grow.",
-  },
+const approach: { icon: IconName; title: string }[] = [
+  { icon: "bulb", title: "Understand your goals" },
+  { icon: "brand", title: "Create solutions" },
+  { icon: "gear", title: "Build & execute" },
+  { icon: "growth", title: "Grow together" },
 ];
+
+const disciplineIcon = { creative: "film", growth: "growth", commerce: "cart", digital: "web-dev" } as const;
 
 export default function AboutPage() {
   return (
     <>
       <PageHero
-        crumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
         eyebrow="About Ghia"
         title={
           <>
             A studio where <span className="grad">ideas</span> take shape.
           </>
         }
-        intro="Ghia Technologies blends strategy, design and technology to build brands that last — and the websites, campaigns and AI systems that make them grow."
+        intro="We're a creative and technology agency, bringing strategy, creativity and innovation together to help brands grow in a digital-first world."
         actions={
-          <Button href={site.bookingUrl} size="lg" icon="arrow-right">
-            Book a growth audit
-          </Button>
+          <>
+            <Button href="/services/" size="lg" icon="arrow-right">
+              Our services
+            </Button>
+            <Button href="/approach/" size="lg" variant="secondary">
+              How we work
+            </Button>
+          </>
         }
+        aside={<AboutVisual className="block h-auto w-full" />}
       />
 
-      <Section className="!pt-4">
-        <Container>
-          <div className="grid gap-5 md:grid-cols-2">
-            <div className="glass rounded-[22px] p-7 sm:p-9">
-              <p className="t-label">Our story</p>
-              <h2 className="t-h2 mt-3 text-ink">Growth is one problem. We treat it like one.</h2>
-              <p className="t-body mt-4">
-                Too many businesses split their growth across a branding agency, a web developer, an
-                SEO team, a paid media agency and now an AI vendor — each reporting a different
-                number. Ghia brings that work together in one studio, so the brand, the website, the
-                campaigns and the follow-up are planned and judged as one system.
-              </p>
-            </div>
-            <div className="glass rounded-[22px] p-7 sm:p-9">
-              <p className="t-label">Vision</p>
-              <h2 className="t-h2 mt-3 text-ink">The only partner a growing business needs.</h2>
-              <p className="t-body mt-4">
-                We want great creative work and reliable growth systems to be within reach of every
-                ambitious business — not just the ones that can afford five agencies. That means
-                doing the work well, explaining it plainly and measuring ourselves on your results.
-              </p>
+      {/* Our story */}
+      <Section>
+        <Container className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-5">
+            <p className="eyebrow eyebrow--plain flex items-center gap-3">
+              <span aria-hidden="true" className="h-0.5 w-5 rounded bg-volt" />
+              Our story
+            </p>
+            <h2 className="t-h1 mt-4 text-ink">
+              Four disciplines. One powerful <span className="grad">team.</span>
+            </h2>
+            <p className="t-body-lg mt-5">
+              Ghia Technologies was born from a simple idea: businesses shouldn&rsquo;t have to juggle
+              multiple agencies for creative, marketing, e-commerce and technology. So we brought it
+              all together — under one roof.
+            </p>
+            <p className="t-body mt-4">
+              The brand, the website, the campaigns and the follow-up are planned and judged as one
+              system, so nothing gets lost between agencies.
+            </p>
+          </div>
+          <div className="lg:col-span-6 lg:col-start-7">
+            <div className="theme-dark ai-glow overflow-hidden rounded-[24px] border border-line">
+              <DisciplinesVisual className="block h-auto w-full" />
             </div>
           </div>
         </Container>
       </Section>
 
-      <Section>
-        <Container>
-          <SectionHeader eyebrow="Why Ghia" title="What makes Ghia different." />
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {different.map((d) => (
-              <div key={d.title} className="glass rounded-[22px] p-7">
-                <h3 className="t-h3 text-ink">{d.title}</h3>
-                <p className="t-body-sm mt-2">{d.body}</p>
-              </div>
+      {/* Disciplines */}
+      <Section className="theme-dark ai-glow border-y border-line">
+        <Container className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-4">
+            <p className="eyebrow-pill">Our disciplines</p>
+            <h2 className="t-h1 mt-5 text-ink">
+              More than an agency. <span className="grad">A growth partner.</span>
+            </h2>
+            <p className="t-body-lg mt-4">
+              From bold creative to smart technology, we help you every step of the way.
+            </p>
+            <div className="mt-8">
+              <Button href="/services/" icon="arrow-right">
+                Explore our services
+              </Button>
+            </div>
+          </div>
+          <ul className="grid gap-4 sm:grid-cols-2 lg:col-span-8 lg:grid-cols-4">
+            {pillarOrder.map((p) => (
+              <li key={p}>
+                <Link
+                  href={`/services/#${p}`}
+                  className="glass lift flex h-full flex-col rounded-[18px] border-volt/40 p-5"
+                >
+                  <Icon name={disciplineIcon[p]} className="size-8 text-volt-text" />
+                  <h3 className="t-h4 mt-4 text-ink">{pillars[p].name}</h3>
+                  <p className="t-body-sm mt-2">{pillars[p].summary}</p>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </Container>
       </Section>
 
-      <Section tone="sunken">
-        <Container>
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
-            <div className="lg:col-span-5">
-              <SectionHeader eyebrow="What we do" title="Engineers, marketers and designers on one team." />
-            </div>
-            <div className="t-body-lg grid gap-6 lg:col-span-6 lg:col-start-7">
-              <p>
-                Ghia Technologies runs a brand&rsquo;s marketplaces, search and paid media, builds the
-                website that converts that demand, and deploys the AI systems that answer and follow up
-                every enquiry.
-              </p>
-              <p>
-                Because one team does all of it, the work connects: ad spend follows inventory, content
-                follows search demand, and every lead gets a reply — whatever channel it came from.
-              </p>
-              <p>
-                We measure all of it the same way: on revenue, with methods you can check.
-              </p>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
+      {/* Why Ghia */}
       <Section>
-        <Container>
-          <SectionHeader eyebrow="Principles" title="How we work." />
-          <RuleColumns items={principles} className="mt-12" />
+        <Container className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-8">
+          <div className="lg:col-span-5">
+            <p className="eyebrow eyebrow--plain flex items-center gap-3">
+              <span aria-hidden="true" className="h-0.5 w-5 rounded bg-volt" />
+              Why Ghia
+            </p>
+            <h2 className="t-h1 mt-4 text-ink">
+              Built for bold ideas. <span className="grad">Designed</span> for real growth.
+            </h2>
+            <p className="t-body-lg mt-5">
+              We&rsquo;re more than a service provider — we&rsquo;re your strategic partner, combining
+              creativity, marketing and technology to deliver measurable impact.
+            </p>
+          </div>
+          <ul className="grid gap-8 sm:grid-cols-2 lg:col-span-7 lg:grid-cols-4 lg:gap-0 lg:divide-x lg:divide-line">
+            {why.map((w) => (
+              <li key={w.title} className="text-center lg:px-4">
+                <span className="glass mx-auto grid size-16 place-items-center rounded-full text-volt-text">
+                  <Icon name={w.icon} className="size-7" />
+                </span>
+                <h3 className="t-h4 mt-4 text-ink">{w.title}</h3>
+                <p className="t-body-sm mt-1.5">{w.body}</p>
+              </li>
+            ))}
+          </ul>
         </Container>
       </Section>
 
-      <Section tone="sunken">
+      {/* Our approach */}
+      <section className="pb-4">
         <Container>
-          <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
+          <div className="theme-dark ai-glow grid gap-10 rounded-[24px] border border-line p-7 sm:p-10 lg:grid-cols-12 lg:items-center lg:gap-8">
             <div className="lg:col-span-5">
-              <div className="mx-auto aspect-square w-full max-w-[380px] rounded-lg border border-line bg-raised p-[18%]">
-                <Mark className="size-full" title="The Ghia G" />
-              </div>
+              <p className="eyebrow eyebrow--plain flex items-center gap-3">
+                <span aria-hidden="true" className="h-0.5 w-5 rounded bg-volt" />
+                Our approach
+              </p>
+              <h2 className="t-h2 mt-4 text-ink">Strategy. Creativity. Technology. Growth.</h2>
+              <p className="t-body mt-3">A seamless process to turn ideas into impact.</p>
             </div>
-            <div className="lg:col-span-6 lg:col-start-7">
-              <SectionHeader eyebrow="The mark" title="One ribbon, folded into a G." />
-              <ol className="mt-10 divide-y divide-line border-y border-line">
-                {markParts.map((p, i) => (
-                  <li key={p.title} className="grid grid-cols-[3rem_1fr] gap-2 py-6">
-                    <Num n={i + 1} className="pt-1" />
-                    <div>
-                      <h3 className="t-h3 text-ink">{p.title}</h3>
-                      <p className="t-body-sm mt-2">{p.body}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </div>
+            <ArrowSteps steps={approach} className="lg:col-span-7" />
           </div>
         </Container>
-      </Section>
-
-      <Section>
-        <Container>
-          <SectionHeader eyebrow="Commitments" title="What you can expect from us." />
-          <RuleColumns items={commitments} className="mt-12" />
-        </Container>
-      </Section>
+      </section>
 
       <CtaBand />
     </>

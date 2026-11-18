@@ -69,8 +69,8 @@ export function Nav() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          <Button href={site.bookingUrl} size="sm" className="hidden sm:inline-flex">
-            Start a project
+          <Button href={site.bookingUrl} size="sm" icon="arrow-right" className="hidden sm:inline-flex">
+            Get a quote
           </Button>
           <button
             type="button"
@@ -109,8 +109,8 @@ export function Nav() {
                 </li>
               ))}
             </ul>
-            <Button href={site.bookingUrl} size="lg" className="mt-6 w-full">
-              Start a project
+            <Button href={site.bookingUrl} size="lg" icon="arrow-right" className="mt-6 w-full">
+              Get a quote
             </Button>
           </Container>
         </nav>

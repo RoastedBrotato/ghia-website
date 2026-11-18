@@ -2,15 +2,15 @@ import type { ReactNode } from "react";
 import { Button, Container } from "@/components/ui/primitives";
 import { site } from "@/lib/site";
 
-/** The closing card on every page: one question, one button. */
+/** The closing card on every page: one line, one button. */
 export function CtaBand({
   title = (
     <>
-      Have a project in <span className="grad">mind?</span>
+      Let&rsquo;s build something great <span className="grad">together.</span>
     </>
   ),
-  body = "Tell us where you want to grow. We'll come back with a clear plan and the team to run it.",
-  cta = "Start a project",
+  body = "Partner with Ghia Technologies and turn your ideas into measurable growth.",
+  cta = "Get in touch",
   href = site.bookingUrl,
 }: {
   title?: ReactNode;
@@ -21,10 +21,12 @@ export function CtaBand({
   return (
     <section className="py-16 sm:py-20">
       <Container>
-        <div className="theme-dark ai-glow mx-auto flex flex-col items-center rounded-[24px] px-6 py-14 text-center sm:py-20">
-          <h2 className="t-h1 text-ink">{title}</h2>
-          <p className="t-body-lg mt-4 max-w-[34rem]">{body}</p>
-          <Button href={href} size="lg" className="mt-8">
+        <div className="theme-dark ai-glow flex flex-col gap-8 rounded-[24px] border border-line px-6 py-12 sm:px-12 md:flex-row md:items-center md:justify-between">
+          <div>
+            <h2 className="t-h1 text-ink">{title}</h2>
+            <p className="t-body-lg mt-3 max-w-[38rem]">{body}</p>
+          </div>
+          <Button href={href} size="lg" icon="arrow-right" className="shrink-0 self-start md:self-auto">
             {cta}
           </Button>
         </div>

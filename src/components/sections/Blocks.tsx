@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Icon } from "@/components/brand/Icon";
+import { Icon, type IconName } from "@/components/brand/Icon";
 import { Card, IconTile, Num, cx } from "@/components/ui/primitives";
 import { industries } from "@/content/industries";
 import { playbooks, formatDate } from "@/content/playbooks";
@@ -28,6 +28,47 @@ export function Steps({
           <Num n={i + 1} />
           <h3 className="t-h3 mt-4 text-ink">{s.title}</h3>
           <p className="t-body-sm mt-2">{s.body}</p>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+/**
+ * Steps in a row joined by arrows: a round badge (number or icon), a title
+ * and an optional line. Stacks on small screens.
+ */
+export function ArrowSteps({
+  steps,
+  className,
+}: {
+  steps: { title: string; body?: string; icon?: IconName }[];
+  className?: string;
+}) {
+  return (
+    <ol className={cx("grid gap-8 sm:grid-cols-2 lg:flex lg:items-start lg:gap-0", className)}>
+      {steps.map((s, i) => (
+        <li key={s.title} className="flex flex-1 items-start lg:contents">
+          <div className="flex flex-1 flex-col items-center text-center">
+            <span
+              className={cx(
+                "grid place-items-center rounded-full",
+                s.icon
+                  ? "size-16 border border-volt/50 bg-volt-soft text-cyan"
+                  : "size-10 bg-btn font-mono text-[14px] font-medium text-on-volt",
+              )}
+            >
+              {s.icon ? <Icon name={s.icon} className="size-7" /> : i + 1}
+            </span>
+            <h3 className="t-h4 mt-4 max-w-[12rem] text-ink">{s.title}</h3>
+            {s.body && <p className="t-body-sm mt-2 max-w-[16rem]">{s.body}</p>}
+          </div>
+          {i < steps.length - 1 && (
+            <Icon
+              name="arrow-right"
+              className={cx("hidden size-5 shrink-0 text-volt-text lg:block", s.icon ? "mt-[22px]" : "mt-2.5")}
+            />
+          )}
         </li>
       ))}
     </ol>

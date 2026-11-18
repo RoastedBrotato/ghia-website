@@ -1,42 +1,58 @@
 import Link from "next/link";
 import { Logo } from "@/components/brand/Logo";
-import { Container } from "@/components/ui/primitives";
-import { navLinks } from "@/content/nav";
+import { Icon, type IconName } from "@/components/brand/Icon";
+import { Container, cx } from "@/components/ui/primitives";
+import { footerLinks, navLinks } from "@/content/nav";
 import { site } from "@/lib/site";
 
-const quickLinks = [
-  ...navLinks.filter((l) => l.href !== "/contact/"),
-  { label: "Approach", href: "/approach/" },
-  { label: "Playbooks", href: "/playbooks/" },
-  { label: "Contact", href: "/contact/" },
-];
+const socialIcon: Record<string, IconName> = {
+  LinkedIn: "linkedin",
+  Instagram: "instagram",
+  X: "x",
+  YouTube: "youtube",
+  Facebook: "facebook",
+};
 
-const linkCls = "block py-1 text-[15px] text-ink-muted transition-colors hover:text-volt-text";
-
-function ColTitle({ children }: { children: React.ReactNode }) {
-  return <h2 className="mb-3 font-display text-[20px] font-light tracking-[-0.01em] text-ink">{children}</h2>;
+/** Social profiles as round icon buttons. Shared by the footer and contact page. */
+export function SocialLinks({ className }: { className?: string }) {
+  return (
+    <ul className={cx("flex flex-wrap gap-2", className)}>
+      {site.socials.map((s) => (
+        <li key={s.label}>
+          <a
+            href={s.href}
+            aria-label={s.label}
+            className="grid size-10 place-items-center rounded-full border border-line-strong text-ink transition-colors hover:border-volt hover:text-volt-text"
+            {...(s.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          >
+            <Icon name={socialIcon[s.label] ?? "globe"} className="size-[18px]" />
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
 }
+
+const linkCls = "text-[14px] text-ink-muted transition-colors hover:text-volt-text";
 
 export function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="theme-dark border-t border-line">
-      <Container className="pb-8 pt-14">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          <div>
+      <Container className="pb-8 pt-12">
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+          <div className="lg:border-r lg:border-line lg:pr-12">
             <Link href="/" aria-label="Ghia Technologies — home" className="inline-block text-ink">
               <Logo className="h-11 w-auto" />
             </Link>
-            <p className="mt-5 max-w-[18rem] text-[15px] leading-6 text-ink-muted">
-              Creative, growth and AI studio — brands, websites, campaigns and the systems that turn
-              attention into customers.
+            <p className="mt-4 text-[14px] text-ink-muted">
+              Creative thinking. Technical precision. Measurable growth.
             </p>
           </div>
 
-          <div>
-            <ColTitle>Quick links</ColTitle>
-            <ul>
-              {quickLinks.map((l) => (
+          <nav aria-label="Footer" className="lg:flex-1 lg:px-12">
+            <ul className="flex flex-wrap gap-x-7 gap-y-3">
+              {[...navLinks, ...footerLinks].map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className={linkCls}>
                     {l.label}
@@ -44,49 +60,26 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
-
-          <div>
-            <ColTitle>Contact</ColTitle>
-            <a href={`mailto:${site.email}`} className={`${linkCls} break-all`}>
+            <a href={`mailto:${site.email}`} className={`${linkCls} mt-4 inline-block break-all`}>
               {site.email}
             </a>
-            <Link href="/contact/" className={linkCls}>
-              Send a project enquiry
-            </Link>
-          </div>
+          </nav>
 
-          <div>
-            <ColTitle>Follow</ColTitle>
-            <ul>
-              {site.socials.map((s) => (
-                <li key={s.label}>
-                  <a
-                    href={s.href}
-                    className={linkCls}
-                    {...(s.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  >
-                    {s.label}
-                  </a>
-                </li>
-              ))}
-              <li>
-                <Link href="/privacy/" className={linkCls}>
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms/" className={linkCls}>
-                  Terms &amp; Conditions
-                </Link>
-              </li>
-            </ul>
-          </div>
+          <SocialLinks />
         </div>
 
-        <p className="mt-12 border-t border-line pt-6 text-center text-[13px] text-ink-subtle">
-          &copy; {year} Ghia Technologies. All rights reserved.
-        </p>
+        <div className="mt-10 flex flex-col gap-3 border-t border-line pt-6 text-[13px] text-ink-subtle sm:flex-row sm:items-center sm:justify-between">
+          <p>&copy; {year} Ghia Technologies. All rights reserved.</p>
+          <p className="flex items-center gap-3">
+            <Link href="/privacy/" className="hover:text-ink">
+              Privacy Policy
+            </Link>
+            <span aria-hidden="true">|</span>
+            <Link href="/terms/" className="hover:text-ink">
+              Terms of Service
+            </Link>
+          </p>
+        </div>
       </Container>
     </footer>
   );
