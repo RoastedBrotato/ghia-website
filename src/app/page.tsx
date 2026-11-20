@@ -1,12 +1,7 @@
+import Link from "next/link";
 import { CtaBand } from "@/components/layout/CtaBand";
-import {
-  Button,
-  Card,
-  CardArrow,
-  Container,
-  Eyebrow,
-  IconTile,
-} from "@/components/ui/primitives";
+import { Button, Container, Eyebrow, IconTile } from "@/components/ui/primitives";
+import { Icon } from "@/components/brand/Icon";
 import { HeroVisual } from "@/components/brand/HeroVisual";
 import { PhoneCall } from "@/components/mockups/PhoneCall";
 import { DivisionCards } from "@/components/sections/ServiceCards";
@@ -14,48 +9,27 @@ import { solutions } from "@/content/solutions";
 import { site } from "@/lib/site";
 
 /**
- * Home is deliberately plain: hero → who we are → what we do → flagship
- * solutions → how we work → one ask. No scroll effects or animation; every
- * detail lives on its own page.
+ * Home is deliberately short: hero → what we do → flagship AI → one ask.
+ * No scroll effects or animation; every detail lives on its own page.
+ * Illustrations are desktop-only so mobile stays close to one screen per idea.
  */
-
-const capabilities = [
-  {
-    title: "Strategy first",
-    body: "Research-led thinking behind every pixel, every frame and every pound of ad spend.",
-  },
-  {
-    title: "Craft in-house",
-    body: "Brand, web, film, 3D and animation made by one team, so it all looks like one brand.",
-  },
-  {
-    title: "Built to convert",
-    body: "Fast websites, tracked campaigns and reporting on leads and revenue, not likes.",
-  },
-  {
-    title: "AI that follows up",
-    body: "Every enquiry answered in minutes, day or night, and handed to your team ready to close.",
-  },
-];
-
 export default function Home() {
   return (
     <>
       {/* Hero on the navy band */}
       <div className="theme-dark hero-glow">
-        <section className="overflow-hidden pb-16 pt-16 sm:pb-24 sm:pt-20">
+        <section className="overflow-hidden pb-8 pt-8 sm:pb-14 sm:pt-14 lg:py-12">
           <Container className="grid items-center gap-6 lg:grid-cols-12 lg:gap-4">
             <div className="lg:col-span-6">
-              <Eyebrow className="mb-5">Creative, growth &amp; AI studio</Eyebrow>
+              <Eyebrow className="mb-4 sm:mb-5">Creative, growth &amp; AI studio</Eyebrow>
               <h1 className="t-display-xl max-w-[56rem] text-ink">
                 We build <span className="grad">brands</span> that grow.
               </h1>
-              <p className="t-body-lg mt-6 max-w-[36rem]">
-                Ghia Technologies designs brands, builds websites, produces
-                films and runs the campaigns and AI systems that turn attention
-                into customers.
+              <p className="t-body-lg mt-4 max-w-[36rem] sm:mt-6">
+                One studio for brand, web, film, campaigns and AI — the idea, the
+                build and the results, so nothing gets lost between agencies.
               </p>
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-6 flex flex-wrap gap-3 sm:mt-8">
                 <Button href={site.bookingUrl} size="lg">
                   Start a project
                 </Button>
@@ -64,99 +38,72 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <div className="-mx-4 sm:mx-0 lg:col-span-6 lg:-mr-12">
+            <div className="hidden lg:col-span-6 lg:-mr-12 lg:block">
               <HeroVisual className="block h-auto w-full" />
             </div>
           </Container>
         </section>
       </div>
 
-      {/* Who we are */}
-      <section className="pb-12 pt-20 sm:pb-16 sm:pt-24">
-        <Container>
-          <Eyebrow className="mb-5">Who we are</Eyebrow>
-          <h2 className="t-h1 max-w-[44rem] text-ink">
-            Creative thinking, <span className="grad">technical precision</span>
-            .
-          </h2>
-          <p className="t-body-lg mt-5 max-w-[44rem]">
-            From brand identity and film to paid media, marketplaces and AI
-            agents, we&rsquo;re one studio for the idea, the build and the
-            results — so nothing gets lost between agencies.
-          </p>
-        </Container>
-      </section>
-
       {/* What we do */}
-      <section className="py-12 sm:py-16">
+      <section className="py-8 sm:py-12 lg:py-14">
         <Container>
-          <Eyebrow className="mb-5">Services</Eyebrow>
-          <h2 className="t-h1 text-ink">What we do</h2>
-          <p className="t-body-lg mt-5 max-w-[40rem]">
-            Four divisions, one team.
-          </p>
-          <div className="mt-10">
-            <DivisionCards />
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <Eyebrow className="mb-3">Services</Eyebrow>
+              <h2 className="t-h1 text-ink">
+                Four divisions, <span className="grad">one team</span>.
+              </h2>
+            </div>
+            <div className="hidden sm:block">
+              <Button href="/services/" variant="secondary" icon="arrow-right">
+                All services
+              </Button>
+            </div>
           </div>
-          <div className="mt-8">
-            <Button href="/services/" variant="secondary">
-              All services
-            </Button>
+          <div className="mt-6 sm:mt-8">
+            <DivisionCards />
           </div>
         </Container>
       </section>
 
       {/* Flagship solutions: the one futuristic band */}
-      <section className="theme-dark ai-glow mt-12 py-20 sm:mt-16 sm:py-24">
-        <Container>
-          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-8">
-            <div className="lg:col-span-6">
-              <Eyebrow className="mb-5">Flagship solutions</Eyebrow>
-              <h2 className="t-h1 text-ink">
-                AI systems that do the <span className="grad">work</span>.
-              </h2>
-              <p className="t-body-lg mt-5 max-w-[34rem]">
-                An AI receptionist that answers every call, books the
-                appointment and hands your team a summary, day or night.
-              </p>
-              <div className="mt-8">
-                <Button href="/solutions/">Explore AI solutions</Button>
-              </div>
-            </div>
-            <div className="lg:col-span-6">
-              <PhoneCall />
+      <section className="theme-dark ai-glow py-8 sm:py-12">
+        <Container className="grid items-center gap-8 lg:grid-cols-12">
+          <div className="lg:col-span-7">
+            <Eyebrow className="mb-3">Flagship solutions</Eyebrow>
+            <h2 className="t-h1 text-ink">
+              AI systems that do the <span className="grad">work</span>.
+            </h2>
+            <p className="t-body-lg mt-3 max-w-[34rem]">
+              Answer every call, follow up every lead and clear the admin — day or night.
+            </p>
+            <ul className="mt-6 grid gap-2.5">
+              {solutions.map((s) => (
+                <li key={s.slug}>
+                  <Link
+                    href={`/solutions/#${s.slug}`}
+                    className="glass lift group/card flex items-center gap-4 rounded-[16px] p-3.5 sm:p-4"
+                  >
+                    <IconTile name={s.icon} className="size-10 rounded-full" />
+                    <span className="min-w-0 flex-1">
+                      <span className="t-label block">{s.name}</span>
+                      <span className="mt-0.5 block text-[15px] font-medium leading-6 text-ink">{s.promise}</span>
+                    </span>
+                    <Icon
+                      name="arrow-right"
+                      className="size-5 shrink-0 text-ink-muted transition-transform duration-200 group-hover/card:translate-x-[3px] group-hover/card:text-volt-text"
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6">
+              <Button href="/solutions/">Explore AI solutions</Button>
             </div>
           </div>
-          <div className="mt-14 grid gap-5 md:grid-cols-3">
-            {solutions.map((s) => (
-              <Card
-                key={s.slug}
-                href={`/solutions/#${s.slug}`}
-                className="h-full"
-              >
-                <IconTile name={s.icon} className="rounded-full" />
-                <p className="t-label mt-6">{s.name}</p>
-                <h3 className="t-h3 mt-2 text-ink">{s.promise}</h3>
-                <p className="t-body-sm mt-2">{s.summary}</p>
-                <CardArrow />
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Capabilities */}
-      <section className="py-12 sm:py-16">
-        <Container>
-          <Eyebrow className="mb-5">Our approach</Eyebrow>
-          <h2 className="t-h1 text-ink">Capabilities</h2>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {capabilities.map((c) => (
-              <div key={c.title} className="glass rounded-[22px] p-7">
-                <h3 className="t-h3 text-ink">{c.title}</h3>
-                <p className="t-body-sm mt-2">{c.body}</p>
-              </div>
-            ))}
+          <div className="hidden lg:col-span-5 lg:block">
+            <PhoneCall />
           </div>
         </Container>
       </section>

@@ -26,16 +26,17 @@ export function PageHero({
 }) {
   return (
     <section className="theme-dark hero-glow relative overflow-hidden">
-      <Container className={cx("pb-16 sm:pb-20", aside ? "pt-10 sm:pt-12" : "pt-10 sm:pt-14")}>
+      <Container className="pb-8 pt-6 sm:pb-12 sm:pt-10 lg:pb-14">
         {crumbs && <Breadcrumb items={crumbs} />}
         <div className={cx("grid gap-10", !!aside && "lg:grid-cols-12 lg:items-center lg:gap-6")}>
           <div className={cx(aside ? "lg:col-span-6" : "max-w-[52rem]")}>
-            <p className="eyebrow-pill mb-6">{eyebrow}</p>
+            <p className="eyebrow-pill mb-4 sm:mb-6">{eyebrow}</p>
             <h1 className="t-display-lg text-ink">{title}</h1>
-            {intro && <p className="t-body-lg mt-6 max-w-[38rem]">{intro}</p>}
-            {actions && <div className="mt-8 flex flex-wrap gap-3">{actions}</div>}
+            {intro && <p className="t-body-lg mt-4 max-w-[38rem] sm:mt-6">{intro}</p>}
+            {actions && <div className="mt-6 flex flex-wrap gap-3 sm:mt-8">{actions}</div>}
           </div>
-          {aside && <div className="-mx-4 sm:mx-0 lg:col-span-6 lg:col-start-7 lg:-mr-6">{aside}</div>}
+          {/* Illustrations are decorative: desktop only, to keep mobile scroll short. */}
+          {aside && <div className="hidden lg:col-span-6 lg:col-start-7 lg:-mr-6 lg:block">{aside}</div>}
         </div>
         {children}
       </Container>

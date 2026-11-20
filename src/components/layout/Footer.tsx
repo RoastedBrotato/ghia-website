@@ -39,11 +39,11 @@ export function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="theme-dark border-t border-line">
-      <Container className="pb-8 pt-12">
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+      <Container className="pb-6 pt-10">
+        <div className="flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between">
           <div className="lg:border-r lg:border-line lg:pr-12">
             <Link href="/" aria-label="Ghia Technologies — home" className="inline-block text-ink">
-              <Logo className="h-11 w-auto" />
+              <Logo className="h-9 w-auto sm:h-11" />
             </Link>
             <p className="mt-4 text-[14px] text-ink-muted">
               Creative thinking. Technical precision. Measurable growth.
@@ -51,7 +51,7 @@ export function Footer() {
           </div>
 
           <nav aria-label="Footer" className="lg:flex-1 lg:px-12">
-            <ul className="flex flex-wrap gap-x-7 gap-y-3">
+            <ul className="grid grid-cols-3 gap-x-4 gap-y-2.5 sm:flex sm:flex-wrap sm:gap-x-7 sm:gap-y-3">
               {[...navLinks, ...footerLinks].map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className={linkCls}>
@@ -68,7 +68,7 @@ export function Footer() {
           <SocialLinks />
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 border-t border-line pt-6 text-[13px] text-ink-subtle sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-7 flex flex-col gap-2 border-t border-line pt-6 text-[13px] text-ink-subtle sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {year} Ghia Technologies. All rights reserved.</p>
           <p className="flex items-center gap-3">
             <Link href="/privacy/" className="hover:text-ink">

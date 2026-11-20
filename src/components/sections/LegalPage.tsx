@@ -23,7 +23,7 @@ export function LegalPage({
           </p>
         </Container>
       </header>
-      <Container className="py-16">
+      <Container className="py-10 sm:py-14">
         <div className="prose-ghia">{children}</div>
       </Container>
     </>

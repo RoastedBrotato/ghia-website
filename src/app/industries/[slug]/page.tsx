@@ -59,7 +59,7 @@ export default async function IndustryPage({ params }: Props) {
       <Section>
         <Container>
           <SectionHeader eyebrow="The problem" title="Where growth gets stuck." />
-          <div className="mt-12 grid gap-x-6 gap-y-12 md:grid-cols-3">
+          <div className="mt-8 grid gap-x-6 gap-y-12 md:grid-cols-3">
             {ind.challenges.map((c, i) => (
               <div
                 key={c.title}
@@ -80,7 +80,7 @@ export default async function IndustryPage({ params }: Props) {
             eyebrow="What we deploy"
             title="Growth and automation, working together."
           />
-          <div className="mt-12 grid gap-4 md:grid-cols-2">
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
             {ind.deploy.map((d) => {
               const svc = getService(d.service);
               return (

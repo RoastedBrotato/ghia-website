@@ -19,12 +19,12 @@ export function CtaBand({
   href?: string;
 }) {
   return (
-    <section className="py-16 sm:py-20">
+    <section className="cta-band py-8 sm:py-12">
       <Container>
-        <div className="theme-dark ai-glow flex flex-col gap-8 rounded-[24px] border border-line px-6 py-12 sm:px-12 md:flex-row md:items-center md:justify-between">
+        <div className="theme-dark ai-glow flex flex-col gap-6 rounded-[24px] border border-line px-5 py-8 sm:px-10 sm:py-10 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="t-h1 text-ink">{title}</h2>
-            <p className="t-body-lg mt-3 max-w-[38rem]">{body}</p>
+            <p className="t-body-lg mt-2 max-w-[38rem]">{body}</p>
           </div>
           <Button href={href} size="lg" icon="arrow-right" className="shrink-0 self-start md:self-auto">
             {cta}

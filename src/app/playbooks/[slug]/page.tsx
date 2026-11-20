@@ -89,7 +89,7 @@ export default async function PlaybookPage({ params }: Props) {
             </p>
           </Container>
         </header>
-        <Container className="py-16 sm:py-20">
+        <Container className="py-10 sm:py-14">
           <div className="prose-ghia mx-auto lg:mx-0 lg:ml-[calc((100%-68ch)/4)]">
             {p.body.map(renderBlock)}
           </div>
@@ -103,7 +103,7 @@ export default async function PlaybookPage({ params }: Props) {
       <Section tone="sunken">
         <Container>
           <SectionHeader eyebrow="More playbooks" title="Keep reading." />
-          <div className="mt-12">
+          <div className="mt-8">
             <PlaybookCards exclude={p.slug} />
           </div>
         </Container>

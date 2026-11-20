@@ -97,8 +97,14 @@
   --brand-volt: #1678e8;
   --brand-graphite: #1d3560;
 
-  --nav-height: 72px;
+  --nav-height: 64px;
   --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --nav-height: 72px;
+  }
 }
 
 @theme inline {
@@ -151,8 +157,24 @@
   body {
     overflow-x: clip;
   }
-  body {
+  /* Very wide screens: the whole site sits in a centred frame instead of
+     stretching edge to edge. Full-bleed navy bands stop at the frame. */
+  html {
+    background: var(--surface-sunken);
+  }
+  .site-frame {
+    max-width: 1600px;
+    margin-inline: auto;
     background: var(--paper);
+  }
+  @media (min-width: 1600px) {
+    .site-frame {
+      border-inline: 1px solid var(--line);
+      box-shadow: 0 0 80px -40px rgba(17, 24, 39, 0.25);
+    }
+  }
+  body {
+    background: var(--surface-sunken);
     color: var(--ink);
     font-family: var(--font-sans);
     font-size: 16px;
@@ -181,7 +203,7 @@
   .t-display-xl {
     font-family: var(--font-display);
     font-weight: 300;
-    font-size: clamp(3.25rem, 1.6rem + 6.4vw, 6rem);
+    font-size: clamp(2.5rem, 1.5rem + 4.6vw, 5rem);
     line-height: 1;
     letter-spacing: -0.04em;
     text-wrap: balance;
@@ -189,7 +211,7 @@
   .t-display-lg {
     font-family: var(--font-display);
     font-weight: 300;
-    font-size: clamp(2.75rem, 1.7rem + 4.2vw, 4.5rem);
+    font-size: clamp(2.125rem, 1.5rem + 3vw, 3.75rem);
     line-height: 1.05;
     letter-spacing: -0.032em;
     text-wrap: balance;
@@ -197,7 +219,7 @@
   .t-h1 {
     font-family: var(--font-display);
     font-weight: 300;
-    font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+    font-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.625rem);
     line-height: 1.125;
     letter-spacing: -0.025em;
     text-wrap: balance;
@@ -225,7 +247,7 @@
     letter-spacing: -0.005em;
   }
   .t-body-lg {
-    font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
     line-height: 1.6;
     letter-spacing: -0.005em;
     color: var(--ink-muted);
@@ -471,4 +493,10 @@
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Two light sections in a row share one gap instead of stacking two. */
+section.bg-paper + section.bg-paper,
+section.bg-paper + section.cta-band {
+  padding-top: 0;
 }

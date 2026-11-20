@@ -69,9 +69,11 @@ export function Nav() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          <Button href={site.bookingUrl} size="sm" icon="arrow-right" className="hidden sm:inline-flex">
-            Get a quote
-          </Button>
+          <div className="hidden sm:block">
+            <Button href={site.bookingUrl} size="sm" icon="arrow-right">
+              Get a quote
+            </Button>
+          </div>
           <button
             type="button"
             className="grid size-10 place-items-center rounded-full text-ink lg:hidden"

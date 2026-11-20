@@ -47,7 +47,7 @@ export default function ApproachPage() {
             title="Start small or run the whole system."
             intro="Every engagement starts with an audit. Pricing is agreed before any work begins."
           />
-          <div className="mt-12 grid gap-4 lg:grid-cols-3">
+          <div className="mt-8 grid gap-4 lg:grid-cols-3">
             {engagementModels.map((m, i) => (
               <div
                 key={m.name}
@@ -77,13 +77,13 @@ export default function ApproachPage() {
       <Section>
         <Container>
           <SectionHeader eyebrow="Commitments" title="What you can expect from us." />
-          <RuleColumns items={commitments} className="mt-12" />
+          <RuleColumns items={commitments} className="mt-8" />
         </Container>
       </Section>
 
       <Section tone="sunken">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
+          <div className="grid gap-8 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-4">
               <SectionHeader eyebrow="FAQ" title="Questions we hear." />
             </div>

@@ -15,7 +15,7 @@ export function Steps({
   return (
     <ol
       className={cx(
-        "grid gap-x-6 gap-y-10 sm:grid-cols-2",
+        "grid grid-cols-2 gap-x-5 gap-y-7",
         steps.length === 5 ? "lg:grid-cols-5" : steps.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4",
         className,
       )}
@@ -26,8 +26,8 @@ export function Steps({
           className="border-t border-volt pt-5"
         >
           <Num n={i + 1} />
-          <h3 className="t-h3 mt-4 text-ink">{s.title}</h3>
-          <p className="t-body-sm mt-2">{s.body}</p>
+          <h3 className="t-h4 mt-3 text-ink sm:text-[1.375rem] sm:leading-[1.875rem]">{s.title}</h3>
+          <p className="t-body-sm mt-1.5">{s.body}</p>
         </li>
       ))}
     </ol>
@@ -46,7 +46,7 @@ export function ArrowSteps({
   className?: string;
 }) {
   return (
-    <ol className={cx("grid gap-8 sm:grid-cols-2 lg:flex lg:items-start lg:gap-0", className)}>
+    <ol className={cx("grid grid-cols-2 gap-x-4 gap-y-6 lg:flex lg:items-start lg:gap-0", className)}>
       {steps.map((s, i) => (
         <li key={s.title} className="flex flex-1 items-start lg:contents">
           <div className="flex flex-1 flex-col items-center text-center">
@@ -84,7 +84,7 @@ export function RuleColumns({
   className?: string;
 }) {
   return (
-    <div className={cx("grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4", className)}>
+    <div className={cx("grid grid-cols-2 gap-x-5 gap-y-7 lg:grid-cols-4", className)}>
       {items.map((p, i) => (
         <div key={p.title} className="border-t border-line-strong pt-5">
           <Num n={i + 1} />
@@ -101,7 +101,7 @@ export function IndustryGrid() {
     <div className="grid gap-4 sm:grid-cols-2">
       {industries.map((ind) => (
         <div key={ind.slug}>
-        <Card href={`/industries/${ind.slug}/`} className="h-full min-h-[240px]">
+        <Card href={`/industries/${ind.slug}/`} className="h-full sm:min-h-[220px]">
           <div className="flex items-start justify-between gap-6">
             <IconTile name={ind.icon} />
             <Icon
@@ -109,7 +109,7 @@ export function IndustryGrid() {
               className="size-5 text-ink-subtle transition-colors group-hover/card:text-ink"
             />
           </div>
-          <h3 className="t-h2 mt-auto pt-10 text-ink">{ind.name}</h3>
+          <h3 className="t-h2 mt-auto pt-5 text-ink sm:pt-10">{ind.name}</h3>
           <p className="t-body-sm mt-2 max-w-[26rem]">{ind.summary}</p>
         </Card>
         </div>
@@ -125,14 +125,14 @@ export function PlaybookCards({ limit, exclude }: { limit?: number; exclude?: st
     <div className="grid gap-4 md:grid-cols-3">
       {items.map((p) => (
         <div key={p.slug}>
-        <Card href={`/playbooks/${p.slug}/`} className="h-full min-h-[300px]">
+        <Card href={`/playbooks/${p.slug}/`} className="h-full md:min-h-[280px]">
           <div className="flex items-center justify-between gap-4">
             <span className="t-label">{p.category}</span>
             <span className="font-mono text-[12px] text-ink-subtle">{p.readMinutes} min</span>
           </div>
-          <h3 className="t-h3 mt-8 text-ink">{p.title}</h3>
+          <h3 className="t-h3 mt-4 text-ink md:mt-8">{p.title}</h3>
           <p className="t-body-sm mt-3">{p.summary}</p>
-          <div className="mt-auto flex items-center justify-between pt-8">
+          <div className="mt-auto flex items-center justify-between pt-5 md:pt-8">
             <span className="font-mono text-[12px] text-ink-subtle">{formatDate(p.date)}</span>
             <span className="inline-flex items-center gap-1.5 text-[14px] font-medium text-ink">
               Read
@@ -153,15 +153,15 @@ export function FaqList({ faqs }: { faqs: { q: string; a: string }[] }) {
   return (
     <div className="divide-y divide-line border-y border-line">
       {faqs.map((f) => (
-        <details key={f.q} className="group py-1">
-          <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 text-left [&::-webkit-details-marker]:hidden">
+        <details key={f.q} className="group">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-4 text-left [&::-webkit-details-marker]:hidden">
             <span className="t-h4 text-ink">{f.q}</span>
             <Icon
               name="plus"
               className="size-5 shrink-0 text-ink transition-transform duration-200 group-open:rotate-45"
             />
           </summary>
-          <p className="t-body max-w-[46rem] pb-6">{f.a}</p>
+          <p className="t-body max-w-[46rem] pb-5">{f.a}</p>
         </details>
       ))}
     </div>
@@ -170,7 +170,7 @@ export function FaqList({ faqs }: { faqs: { q: string; a: string }[] }) {
 
 export function Breadcrumb({ items }: { items: { label: string; href?: string }[] }) {
   return (
-    <nav aria-label="Breadcrumb" className="mb-8">
+    <nav aria-label="Breadcrumb" className="mb-5 sm:mb-8">
       <ol className="flex flex-wrap items-center gap-2 font-mono text-[12px] uppercase tracking-[0.08em] text-ink-subtle">
         {items.map((it, i) => (
           <li key={it.label} className="flex items-center gap-2">

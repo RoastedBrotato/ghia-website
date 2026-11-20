@@ -89,10 +89,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className="min-h-dvh bg-paper text-ink">
-        <Nav />
-        <main id="main">{children}</main>
-        <Footer />
+      <body className="min-h-dvh text-ink">
+        <div className="site-frame min-h-dvh">
+          <Nav />
+          <main id="main">{children}</main>
+          <Footer />
+        </div>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}

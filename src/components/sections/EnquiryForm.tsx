@@ -106,7 +106,7 @@ export function EnquiryForm({ className }: { className?: string }) {
   return (
     <form
       onSubmit={onSubmit}
-      className={cx("glass grid gap-3 rounded-[26px] p-6 sm:p-8", className)}
+      className={cx("glass grid gap-3 rounded-[20px] p-4 sm:rounded-[26px] sm:p-8", className)}
       aria-label="Project enquiry"
     >
       <div className="grid gap-3 sm:grid-cols-2">
@@ -174,7 +174,7 @@ export function EnquiryForm({ className }: { className?: string }) {
           required
           minLength={10}
           maxLength={5000}
-          rows={5}
+          rows={4}
           placeholder="Tell us about the project and what you want to achieve *"
           aria-invalid={invalid("message") || undefined}
           className={cx(field, "resize-y", invalid("message") && "border-danger")}

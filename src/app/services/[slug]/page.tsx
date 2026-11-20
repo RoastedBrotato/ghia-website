@@ -108,7 +108,7 @@ export default async function ServicePage({ params }: Props) {
               </>
             }
           />
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {s.capabilities.map((c, i) => (
               <Card key={c.title} className="h-full">
                 <Num n={i + 1} />
@@ -127,13 +127,13 @@ export default async function ServicePage({ params }: Props) {
             title="How a project runs, step by step."
             intro="You see the work at every stage, and nothing moves forward until you've signed it off."
           />
-          <Steps steps={pillar.process} className="mt-12" />
+          <Steps steps={pillar.process} className="mt-8" />
         </Container>
       </Section>
 
       <Section>
         <Container>
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
+          <div className="grid gap-8 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-5">
               <SectionHeader eyebrow="Who it's for" title="A good fit if you're…" />
             </div>
@@ -151,10 +151,10 @@ export default async function ServicePage({ params }: Props) {
 
       <Section tone="sunken">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
+          <div className="grid gap-8 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-5">
               <SectionHeader eyebrow="What you get" title="Clear from day one." />
-              <div className="mt-10">
+              <div className="mt-6">
                 <Card>
                   <CheckList items={s.outcomes} />
                   <div className="mt-8 border-t border-line pt-6">
@@ -184,7 +184,7 @@ export default async function ServicePage({ params }: Props) {
               </Button>
             }
           />
-          <div className="mt-12 grid gap-4 md:grid-cols-3">
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
             {related.map((r) => (
               <Card key={r.slug} href={`/services/${r.slug}/`} className="min-h-[220px]">
                 <IconTile name={r.icon} className="rounded-full" />

@@ -41,7 +41,7 @@ export function Section({
     <section
       id={id}
       className={cx(
-        "relative py-16 sm:py-20 lg:py-24",
+        "relative py-8 sm:py-12 lg:py-14",
         (tone === "sunken" || tone === "ink") && "bg-sunken",
         tone === "paper" && "bg-paper",
         className,
@@ -83,17 +83,17 @@ export function SectionHeader({
   return (
     <div
       className={cx(
-        "flex flex-col gap-6 md:flex-row md:items-end md:justify-between",
+        "flex flex-col gap-4 md:flex-row md:items-end md:justify-between",
         align === "center" && "md:flex-col md:items-center text-center",
         className,
       )}
     >
       <div className={cx("max-w-[44rem]", align === "center" && "mx-auto")}>
-        {eyebrow && <Eyebrow className="mb-5">{eyebrow}</Eyebrow>}
+        {eyebrow && <Eyebrow className="mb-3 sm:mb-4">{eyebrow}</Eyebrow>}
         <As className="t-h1 text-ink">
           {title}
         </As>
-        {intro && <p className="t-body-lg mt-5 max-w-[38rem]">{intro}</p>}
+        {intro && <p className="t-body-lg mt-3 max-w-[38rem] sm:mt-4">{intro}</p>}
       </div>
       {action && <div className="shrink-0">{action}</div>}
     </div>
@@ -244,7 +244,7 @@ export function Card({
   interactive?: boolean;
 }) {
   const cls = cx(
-    "glass group/card relative flex flex-col rounded-[22px] p-6 sm:p-8",
+    "glass group/card relative flex flex-col rounded-[22px] p-5 sm:p-7",
     (href || interactive) && "lift",
     className,
   );
@@ -260,7 +260,7 @@ export function Card({
 
 export function CardArrow({ label = "Learn more" }: { label?: string }) {
   return (
-    <span className="mt-auto inline-flex items-center gap-1.5 pt-6 text-[14px] font-medium text-ink">
+    <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-[14px] font-medium text-ink">
       {label}
       <Icon
         name="arrow-right"
